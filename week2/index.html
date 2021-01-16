@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2 Notes</title>
+
+    <style>
+        body {
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 2 Notes & Exercises</h1>
+    <p>Below are my notes. I'm leaving my team's work on the activity <a href="team.html">here</a> so that I can come back to it if I need to.</p>
+    <ul>
+        <li>Any variable declared outside of a block has a global scope
+            <ul>
+                <li>Likewise, variables declared in blocks (only when using "let" or "const") have a local scope</li>
+                <li>Good programmers limit the amount of global variables</li>
+            </ul>
+        </li>
+        <li>Template literals are special types of strings that were introduced in ES6
+            <ul>
+                <li>Use the backtick (`) character to deliminate the string</li>
+                <li>Allows interpolation of JavaScript code
+                    <ul>
+                        <li>ex: const name = `Robert`; `Hello, ${ name }!`;</li>
+                    </ul>
+                </li>
+                <li>Contains line breaks that are all converted into a Line Feed(\n)</li>
+                <li>If you want to place a backtick inside a template literal, it needs to be escaped with a backslash
+                    <ul>
+                        <li>ex: `Here's how you show a \`, which is a backtick`;</li>
+                    </ul>
+                </li>
+                <li>"Super Strings"
+                    <ul>
+                        <li>Not uncommon to see template literals making all strings</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Symbols were introduced as a new primitive value in ES6
+            <ul>
+                <li>Only way to create them is the Symbol() function
+                    <ul>
+                        <li>ex: const uniqueID = Symbol();</li>
+                    </ul>
+                </li>
+                <li>The description acts as a string representation of the symbol</li>
+                <li>It's possible for two variables to point to the same symbol if for() is used
+                    <ul>
+                        <li>ex: const A = Symbol.for('shared symbol'); const B = Symbol.for('shared symbol')</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Sets were introduced in ES6
+            <ul>
+                <li>A data structure that represents a collection of unique values</li>
+                <li>No duplicates</li>
+                <li>A useful way to keep track of data without having to check if any values have been duplicated</li>
+            </ul>
+        </li>
+    </ul>
+    <h2>Questions</h2>
+    <ul>
+        <li>How does a symbol look like on a website? How would you implement it into your code and why? They create unique values, but I'm not fully sure what that means.</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+  <script>
+    function sum(number){
+      let summedValue = 0;
+      for (var i = 0; i <= number; i++) {
+        summedValue += i;
+      }
+
+      return summedValue;
+    }
+
+  	function displayText() {
+      let summedValue = 0;
+      let resultDiv = document.getElementById("result");
+      let firstNumber = parseInt(document.getElementById("firstNumber").value);
+      if(!isNaN(firstNumber)) {
+        summedValue = sum(firstNumber);
+        resultDiv.textContent = summedValue;
+      } else {
+        resultDiv.textContent = "Not a number";
+      }
+    }
+
+    function operate(myOperation) {
+      let firstNumber = parseInt(document.getElementById("firstNumber").value);
+      let secondNumber = parseInt(document.getElementById("secondNumber").value);
+      let resultDiv = document.getElementById("result");
+
+      if(!isNaN(firstNumber) && !isNaN(secondNumber)) {
+        resultDiv.textContent = myOperation(firstNumber, secondNumber);
+      } else {
+        resultDiv.textContent = "Not a number"; 
+      }
+    }
+
+    function addNumbers(firstNumber, secondNumber) {
+      return firstNumber + secondNumber;
+    }
+
+    const subtractNumbers = function(firstNumber, secondNumber) {
+      return firstNumber - secondNumber;
+    }
+
+    multiplyNumbers = (firstNumber, secondNumber) => {
+      return firstNumber * secondNumber;
+    }
+    
+
+    function divideNumbers(firstNumber, secondNumber) {
+      return firstNumber / secondNumber;
+    }
+  </script>
+
+  <style>
+  	
+  </style>
+</head>
+
+<body>
+  <input id="firstNumber" type="text" name="">
+  <input id="secondNumber" type="text">
+  <input type="button" value="sum" onclick="displayText()">
+  <input type="button" value="+" onclick="operate(addNumbers)">
+  <input type="button" value="-" onclick="operate(subtractNumbers)">
+  <input type="button" value="*" onclick="operate(multiplyNumbers)">
+  <input type="button" value="/" onclick="operate(divideNumbers)">
+  <div id="result"></div>
+	
+</body>
+</html>
