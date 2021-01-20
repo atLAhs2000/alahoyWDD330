@@ -1,0 +1,15 @@
+body {
+    background-color:#e7eff6;
+}
+
+a {
+    color: #fe8a71;
+}
+
+ul>li {
+    color:#4b86b4;
+}
+
+ul>li li {
+    color: black;
+}

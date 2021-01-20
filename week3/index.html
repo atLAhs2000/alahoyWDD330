@@ -14,7 +14,185 @@
 <body>
     <h1>Week 3 Notes & Exercises</h1>
     <p></p>
-    <ul></ul>
+    <ul>
+        <li>"this" is commonly used with objects
+            <ul>
+                <li>To access the object, you can use "this"</li>
+                <li>"this" can be used in methods
+                    <ul>
+                        <li>ex: sayHi() {
+                            <br>
+                            //"this" is the "current object"
+                            <br>
+                            alert(<b>this</b>.name);
+                            <br>
+                        }
+                        </li>
+                    </ul>
+                </li>
+                <li>"this" is not bound
+                    <ul>
+                        <li>Can be used in any function even if it's not a method of an object</li>
+                        <li>The value of "this" is evaluated during the run-time, depending on context</li>
+                        <li>ex:<br>
+                            let user = { name: "John" };<br>
+                            let admin = { name: "Admin" };<br>
+                            function sayHi() {<br>
+                                alert( this.name );<br>
+                            }<br>
+                            user.f = sayHi; // this == user, so it returns "John"<br>
+                            admin.f = sayHi; // this == admin, so it returns "Admin"
+                        </li>
+                        <li>The value of "this" does not depend on where the method was declared, but on what object is "before the dot"</li>
+                    </ul>
+                </li>
+                <li>Arrow functions don't have "this"</li>
+            </ul>
+        </li>
+        <li>Object literals are like dictionaries where you look up a property name and see a value
+            <ul>
+                <li>Similar to a hash or associative array in other languages (or even a JS map), but they are more flexible</li>
+                <li>Mutable at any time when a program is running
+                    <ul>
+                        <li>Just means its properties and methods can be changed or removed, and new ones can be added</li>
+                    </ul>
+                </li>
+                <li>You can access properties of objects via the dot notation or brackets which has a few advantages
+                    <ul>
+                        <li>Dot notation is more commonly seen</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Computed properties were introduced in ES6
+            <ul>
+                <li>The value of a property has always been allowed to be a JavaScript expression
+                    <ul>
+                        <li>ex:<br>
+                            const bewitched = true;<br>
+                            const captainBritain = { name: 'Captain Britain', hero: bewitched ? false : true };<br>
+                            captain Britain<br>
+                            << { name: 'Captain Britain', hero: false }
+                        </li>
+                    </ul>
+                </li>
+                <li>Symbols can be used as a computed property key
+                    <ul>
+                        <li>ex:<br>
+                            const name = Symbol('name');<br>
+                            const supergirl = { [name]: 'Supergirl' };
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>You can check if a property or method exists in an object
+            <ul>
+                <li>You can use "in"
+                    <ul>
+                        <li>ex:<br>
+                            'city' in superman;<br>
+                            << false
+                        </li>
+                    </ul>
+                </li>
+                <li>Check if a property or a method doesn't return "undefined"
+                    <ul>
+                        <li>ex:<br>
+                            superman.city !== undefined;<br>
+                            << false
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>You can add, delete, and change properties in an object
+            <ul>
+                <li>To add, assign a value to a new property
+                    <ul>
+                        <li>ex: superman.city = 'Metropolis';</li>
+                    </ul>
+                </li>
+                <li>Changing a property will use brackets
+                    <ul>
+                        <li>ex: superman['real name'] = 'Kal-El';</li>
+                    </ul>
+                </li>
+                <li>To remove, use the delete operator
+                    <ul>
+                        <li>ex: delete superman.fly</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Objects can contain other objects
+            <ul>
+                <li>In other words, you can nest objects inside of another object</li>
+                <li>Access by using either dot or bracket notation
+                    <ul>
+                        <li>ex: jla.wonderWoman.realName</li>
+                        <li>ex: jla['flash']['realName']</li>
+                    </ul>
+                </li>
+                <li>You can also mix notations</li>
+            </ul>
+        </li>
+        <li>Object literals can be passed as a parameter to a function
+            <ul>
+                <li>Useful for when there are are lot of parameters; allows the arguments to be provided by name and in any order
+                    <ul>
+                        <li>ex: function greet({greeting, name, age})...<br>
+                            ...<br>
+                            greet({ greeting: `What's up dude`, age: 10, name: `Bart`});
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Naming collisions happen when the same var or function name is used for different purposes in the same scope
+            <ul>
+                <li><b>Namespacing</b> is the solution to this problem</li>
+                <li>Holds the variables in that specific scope
+                    <ul>
+                        <li>ex: <br>
+                            const myMaths = {<br>
+                                square(x) {<br>
+                                return x * x<br>
+                                }
+                            }
+                        </li>
+                        <li>This function can now only be called if preceded by the namespace</li>
+                        <li>ex: myMaths.square(3)</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>JSON is a popular lightweight data-storage format
+            <ul>
+                <li>Property names must be double-quotes</li>
+                <li>Permitted values are double-quoted strings, numbers, true, false, null, arrays and objects</li>
+                <li>Functions are not permitted values</li>
+                <li>There are libraries dedicated to parsing and generating JSON
+                    <ul>
+                        <li>The parse() method takes a string of data in JSON format and returns a JavaScript object</li>
+                        <li>The stringify() method does the opposite</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>The RegExp (regular expression) is a pattern that can be used to search strings for matches to the pattern
+            <ul>
+                <li>For more references:
+                    <ul>
+                        <li><a href="http://www.regextester.com" target="_blank">Online Regex Tester</a></li>
+                        <li><a href="https://regex101.com" target="_blank">Regular Expressions 101</a></li>
+                        <li><a href="http://www.amazon.com/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124/" target="_blank">Mastering Regular Expressions by Jeffrey Fried</a></li>
+                        <li><a href="http://www.regular-expressions.info/" target="_blank">Regular Expressions Info</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
 
     <h2>Questions</h2>
     <ul>
