@@ -1,0 +1,16 @@
+body {
+    background-color: #222831;
+    color: #ececec;
+}
+
+a {
+    color: #f2a365;
+}
+
+ul > li {
+    color: #ff6363;
+}
+
+ul > li li {
+    color: #ececec
+}
