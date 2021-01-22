@@ -13,7 +13,8 @@
 </head>
 <body>
     <h1>Week 3 Notes & Exercises</h1>
-    <p></p>
+    <p>I was unable to join my team's meeting due to my mistake with the time, but I'll be leaving both files here for reference.</p>
+    <p><a href="teamexercise1.html">Exercise 1</a> and <a href="teamexercise2.html">Exercise 2</a></p>
     <ul>
         <li>"this" is commonly used with objects
             <ul>
@@ -189,6 +190,31 @@
                         <li><a href="http://www.amazon.com/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124/" target="_blank">Mastering Regular Expressions by Jeffrey Fried</a></li>
                         <li><a href="http://www.regular-expressions.info/" target="_blank">Regular Expressions Info</a></li>
                     </ul>
+                </li>
+            </ul>
+        </li>
+        <li>The DOM treats everything on a web page as a node
+            <ul>
+                <li>Shortcut methods include "Document.body", "Document.images", "Document.links", and more</li>
+                <li>Node lists are array-like objects but are not arrays
+                    <ul>
+                        <li>Access items through index notation</li>
+                        <li>Has a length property</li>
+                        <li>No other array methods like slice, splice, or join</li>
+                        <li>You can turn a node list into an array</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>You can create a function that can create elements
+            <ul>
+                <li>ex:<br>
+                    function createElement(tag, text) {<br>
+                        const el = document.createElement(tag);<br>
+                        el.textContent = text;<br>
+                        return el;<br>
+                    }<br>
+                    const aquaman = createElement('li', 'Aquaman');
                 </li>
             </ul>
         </li>
