@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 2 Notes</title>
+    <title>Week 3 Notes</title>
 
     <style>
         body {
@@ -50,6 +50,7 @@
                 <li>Arrow functions don't have "this"</li>
             </ul>
         </li>
+
         <li>Object literals are like dictionaries where you look up a property name and see a value
             <ul>
                 <li>Similar to a hash or associative array in other languages (or even a JS map), but they are more flexible</li>
@@ -65,6 +66,7 @@
                 </li>
             </ul>
         </li>
+
         <li>Computed properties were introduced in ES6
             <ul>
                 <li>The value of a property has always been allowed to be a JavaScript expression
@@ -87,6 +89,7 @@
                 </li>
             </ul>
         </li>
+
         <li>You can check if a property or method exists in an object
             <ul>
                 <li>You can use "in"
@@ -107,6 +110,7 @@
                 </li>
             </ul>
         </li>
+
         <li>You can add, delete, and change properties in an object
             <ul>
                 <li>To add, assign a value to a new property
@@ -126,6 +130,7 @@
                 </li>
             </ul>
         </li>
+
         <li>Objects can contain other objects
             <ul>
                 <li>In other words, you can nest objects inside of another object</li>
@@ -138,6 +143,7 @@
                 <li>You can also mix notations</li>
             </ul>
         </li>
+
         <li>Object literals can be passed as a parameter to a function
             <ul>
                 <li>Useful for when there are are lot of parameters; allows the arguments to be provided by name and in any order
@@ -150,6 +156,7 @@
                 </li>
             </ul>
         </li>
+
         <li>Naming collisions happen when the same var or function name is used for different purposes in the same scope
             <ul>
                 <li><b>Namespacing</b> is the solution to this problem</li>
@@ -168,6 +175,7 @@
                 </li>
             </ul>
         </li>
+
         <li>JSON is a popular lightweight data-storage format
             <ul>
                 <li>Property names must be double-quotes</li>
@@ -181,6 +189,7 @@
                 </li>
             </ul>
         </li>
+
         <li>The RegExp (regular expression) is a pattern that can be used to search strings for matches to the pattern
             <ul>
                 <li>For more references:
@@ -193,6 +202,7 @@
                 </li>
             </ul>
         </li>
+
         <li>The DOM treats everything on a web page as a node
             <ul>
                 <li>Shortcut methods include "Document.body", "Document.images", "Document.links", and more</li>
@@ -206,6 +216,7 @@
                 </li>
             </ul>
         </li>
+
         <li>You can create a function that can create elements
             <ul>
                 <li>ex:<br>
@@ -218,11 +229,181 @@
                 </li>
             </ul>
         </li>
+
+        <li>You can add event listeners to get JS to do something when an event happens
+            <ul>
+                <li>Use addEventListener in script
+                    <ul>
+                        <li>ex: document.body.addEventListener("click", doSomething);</li>
+                        <li>When "click" happens, the doSomething function will run</li>
+                    </ul>
+                </li>
+                <li>The old way of doing this was an inline event handler
+                    <ul>
+                        <li>onclick="doThisFunction()"</li>
+                        <li>Discouraged for a number of reasons
+                            <ul>
+                                <li>JS code should be kept out of the HTML</li>
+                                <li>Only one event handler can be attached to an element</li>
+                                <li>Hidden away in the markup, making it difficult to find where they've been declared</li>
+                                <li>The JS is entered as a string, so you would need to be careful</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li>The event listener method can be called on a node object or without a node (which applies it to the global object, the whole browser window)
+            <ul>
+                <li>You can call it like this:
+                    <ul>
+                        <li>ex: document.body.addEventListener('click', () => alert('You Clicked!'));</li>
+                    </ul>
+                </li>
+                <li>Or you can declare a function and then reference it in the event listener
+                    <ul>
+                        <li>function doSomething() {<br>
+                            alert('You Clicked!');<br>
+                            }<br>
+                            addEventListener('click',doSomething);
+                        </li>
+                        <li>Note: No parentheses after the function when it's used as an argument; else it will be called when the event listener is set, not when it happens</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li>When an event handler is triggered by an event, the callback function is called and the function is automatically passed an event object as a parameter
+            <ul>
+                <li>event.type (type is a property) gives info on what kind of event is happening</li>
+                <li>event.target returns a reference to the node that fired the event</li>
+            </ul>
+        </li>
+
+        <li>There are different ways to find the position of where a mouse event happens
+            <ul>
+                <li>screenX and screenY show the number of pixels from left and top of the screen respectively where the event took place</li>
+                <li>clientX and clientY show the number of pixels from the left and top of the client that is that is being used (usually browser window)</li>
+                <li>pageX and pageY show the number of pixels from left and top respectively where the event took place in the document
+                    <ul>
+                        <li>Takes account of whether the page has been scrolled</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li>There are different events, one of them being mouse events
+            <ul>
+                <li>mousedown and mouseup are also events</li>
+                <li>The order of when these events are fired is: mousedown, mouseup, click</li>
+                <li>dblclick is also an event; it is fired when the user double clicks
+                    <ul>
+                        <li>Note: Be cautious about using click and dblclick on the same element. A doubleclick event will always cause the click event to fire.</li>
+                    </ul>
+                </li>
+                <li>mouseover occurs when the cursor is placed over the element while mouseout occurs when the cursor moves away from the element</li>
+            </ul>
+        </li>
+
+        <li>Keyboard events occur when a user presses a key
+            <ul>
+                <li>The order in which the events occur is: keydown, keypress, keyup
+                    <ul>
+                        <li>a keydown event occurs when a key is pressed and will continue to occur if the key is held down</li>
+                        <li>a keypress event occurs after a keydown event but before a keyup event; only occurs for keys that product character input (and the 'Delete' key), making it the most reliable way to find what character was pressed</li>
+                        <li>a keyup event occurs when a key is released</li>
+                    </ul>
+                </li>
+                <li>Distinguish: a keydown event is the action of pressing a key; the keypress event is the action of a character being typed on the screen</li>
+                <li>All of these keyboard events have a key property that returns the printed representation of the key that was pressed, if it has one
+                    <ul>
+                        <li>ex: addEventListener('keypress', (event) => console.log(`You pressed the ${event.key} character`));</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        
+        <li>Since there are now new devices like smartphones and tablets, touch events are supported
+            <ul>
+                <li>It's important to support mouse events as well as touch events</li>
+                <li>The touchstart event occurs when a user initially touches the surface
+                    <ul>
+                        <li>Careful when using the touchstart event; it starts as soon as the user touches the screen, even if they intend to do something else</li>
+                    </ul>
+                </li>
+                <li>The touchend event occurs when a user stops touching the surface</li>
+                <li>The touchmove event occurs after a user has touched the screen than moves around without leaving; will continue to occur as long as the user is still touching the screen</li>
+                <li>touchenter occurs when a user has already started touching the surface but then passes over the element to which the event listener is attached</li>
+                <li>touchleave occurs when the user is still touching the surface but leaves the element to which the event listener is attached</li>
+                <li>touchcancel occurs when a touch event is interrupted</li>
+                <li>There are no 'swipe' events; they are created by combining touchstart, touchmove, and touchleave events that monitor distance and direction moved from start to finish of a touch event
+                    <ul>
+                        <li>If you want to implement gestures, try using a library like <a href="http://hammerjs.github.io/" target="_blank">Hammer.JS</a> and <a href="https://zingchart.github.io/zingtouch/" target="_blank">zingtouch</a>.</li>
+                    </ul>
+                </li>
+                <li>Because you can touch a surface many times at once, touch event objects have a property called "touches"
+                    <ul>
+                        <li>This is returned as a list</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        
+        <li>An event listener can be removed using the removeEventListener() method
+            <ul>
+                <li>Note that you shouldn't use anonymous functions as an argument to addEventListener() if you want to remove it later</li>
+                <li>There needs to be a reference to the same function name in the arguments of removeEventListener()</li>
+            </ul>
+        </li>
+
+        <li>preventDefault() is a method of the event object that can be used to stop the default behavior from happening
+            <ul>
+                <li>Think carefully before using preventDefault()</li>
+            </ul>
+        </li>
+
+        <li>When you click on an element, you're clicking on all the elements it's nested inside of
+            <ul>
+                <li>An event propagates as it moves from one element to another</li>
+                <li>Event propagation is the order that the events fire on each element</li>
+                <li>Bubling is when the event fires on the element clicked on first before it bubbles up the document tree
+                    <ul>
+                        <li>Fires event on each parent element until it reaches the root node</li>
+                    </ul>
+                </li>
+                <li>Capturing starts by firing an event on the root element, then propagates downward
+                    <ul>
+                        <li>Fires event on each element until it reaches the target element that was clicked on</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li>Bubbling is the default behavior
+            <ul>
+                <li>Event fires at target element</li>
+                <li>Bubbles up but nothing happens with elements that have no event listener</li>
+            </ul>
+        </li>
+
+        <li>The addEventListener() method's third parameter is a boolean that specifies whether capturing should be used or not
+            <ul>
+                <li>Useful for when you may want events on outer elements to fire before the events fire on the element that was clicked on</li>
+            </ul>
+        </li>
     </ul>
 
     <h2>Questions</h2>
     <ul>
-        <li>First question</li>
+        <li>While it's not part of the chapters in our reading very much, I want to know more about filters with arrays. It's still a little fuzzy. How does it work?
+            <ul>
+                <li>For example, this is in my team's work:<br>
+                    let filtered = inventors.filter(x => x.year < 1600 && x.year > 1499);<br>
+                    console.log(filtered);
+                </li>
+            </ul>
+        </li>
     </ul>
 
     <script src="../js/dark.js"></script>
