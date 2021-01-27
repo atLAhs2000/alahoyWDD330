@@ -1,15 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Righteous&display=swap');
+
 body {
     background-color:#e7eff6;
+}
+
+main {
+    background-color: white;
 }
 
 a {
     color: #fe8a71;
 }
 
-ul>li {
+ul>li, h1, h2, h3, h4, h5, h6 {
     color:#4b86b4;
 }
 
 ul>li li {
     color: black;
+}
+
+footer {
+    background-color: #d5e7f7;
+}
+
+.example {
+    color: rgb(0, 58, 0);
 }

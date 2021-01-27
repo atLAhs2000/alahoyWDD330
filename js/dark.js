@@ -9,7 +9,7 @@ cssLink.rel = 'stylesheet';
 cssLink.type = 'text/css';
 
 //check what time it is
-if (d.getHours() > 16) {
+if (d.getHours() > 15) {
     //check if index html file is in root or in a folder
     if (document.title == 'Portfolio Directory') {
         cssLink.href = 'css/dark.css';
