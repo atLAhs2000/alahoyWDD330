@@ -11,12 +11,18 @@
         body {
             line-height: 1.5;
         }
+
+        img {
+            width: 80%;
+        }
     </style>
 </head>
 <body>
     <main>
         <h1>Week 4 Notes & Exercises</h1>
         <p>I decided to go along with one of the form examples. Here's the practice: <a href="search.html">A Searching Example</a></p>
+
+        <h2>Chapter 8: Forms</h2>
         <ul>
             <li>When accessing form elements, you need to use the legacy DOM's property called document.forms
                 <ul>
@@ -43,6 +49,7 @@
                     </li>
                 </ul>
             </li>
+
             <li>Form objects have a bunch of useful properties and methods
                 <ul>
                     <li>The form.submit() method will submit the form automatically
@@ -58,6 +65,7 @@
                     <li>form.action can be used to set the action attribute of a form so it's sent to a different URL</li>
                 </ul>
             </li>
+
             <li>Forms trigger different events, some events being exclusive to forms
                 <ul>
                     <li>The focus event occurs when an element is focused on
@@ -79,12 +87,14 @@
                     </li>
                 </ul>
             </li>
+
             <li>Text input element objects have a value property that can be used to retrieve the text inside the field
                 <ul>
                     <li>You can change the value inside the input using JS</li>
                     <li>Alternatively, you can just use the placeholder attribute (I prefer this due to the fact that it does not count as a value)</li>
                 </ul>
             </li>
+
             <li>Three are different form controls that can make web pages more interactive
                 <ul>
                     <li>Input: fields, including text, passwords, checkboxes, radio buttons, file uploads</li>
@@ -93,11 +103,13 @@
                     <li>Button: elements for submitting and resetting forms</li>
                 </ul>
             </li>
+
             <li>Some new attributes were introduced in HTML5
                 <ul>
                     <li>For more reference, check this <a href="https://www.sitepoint.com/html5-forms-markup/">article</a></li>
                 </ul>
             </li>
+
             <li>Form validation is the process of checking whether a user has entered information into the form correctly
                 <ul>
                     <li>Validation can occur on the client side (with JS) and on the server side</li>
@@ -110,6 +122,7 @@
                     </li>
                 </ul>
             </li>
+
             <li>A useful technique to ensure that no errors are submitted is disabling the submit button
                 <ul>
                     <li>If the submit button is disabled, no action is taken when it's clicked</li>
@@ -128,6 +141,127 @@
                             <li>You can call this in a keyup event</li>
                         </ul>
                     </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Chapter 12: Object-Oriented Programming in JavaScript</h2>
+        <p>OOP for short. A style of programming that involves separating code into objects that have properties and methods.</p>
+        <ul>
+            <li>OOP often used to model representations of objects in the real world
+                <ul>
+                    <li>Three main concepts
+                        <ul>
+                            <li>Encapsulation</li>
+                            <li>Polymorphism</li>
+                            <li>Inheritance</li>
+                        </ul>
+                    </li>
+                    <li>Encapsulation: the inner workings are hidden inside the object and only the essential functionalities are exposed to the end user
+                        <ul>
+                            <li>Keeps all programming logic inside an object and makes methods available to implement functionality without the outside world needing to know how it's done</li>
+                        </ul>
+                    </li>
+                    <li>Polymorphism: different objects can use the same process
+                        <ul>
+                            <li>Various objects can share the same method but also have the ability to override the shared methods for more specific implementation</li>
+                        </ul>
+                    </li>
+                    <li>Inheritance: take the features of one object and adding some new features
+                        <ul>
+                            <li>Take an object that exists and inherit properties and methods</li>
+                            <li>New object's functionalities can be improved by adding new properties and methods</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>You can create an object with the object literal notation or with a constructor function
+                <ul>
+                    <li>A function that defines the properties and methods of an object
+                        <ul>
+                            <li class="example">const Dice = function(sides=6) {<br>
+                                &emsp;this.sides = sides;<br>
+                                &emsp;this.roll = function() {<br>
+                                &emsp;&emsp;return Math.floor(this.sides * Math.random() + 1);<br>
+                            &emsp;}<br>
+                                }
+                            </li>
+                            <li>Then you can create an instance of the object using "new"</li>
+                        </ul>
+                    </li>
+                    <li>Parentheses are not required when instantiating a new object using a constructor function
+                        <ul>
+                            <li>Parentheses are required if you want to create an object with a specific argument</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>JS comes with some built-in constructor functions (for instance, array, object, function)
+                <ul>
+                    <li>Arrays are a bit different in how arguments work
+                        <ul>
+                            <li>If multiple arguments, they will be placed in the array</li>
+                            <li>If only one argument, it will set the length of the array with undefined in the index</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>Constructor functions were the only way of using class-like behavior in JS before ES6
+                <ul>
+                    <li>Class declaration syntax in JS does the same thing as the constructor function but looks similar to class declarations in a class-based language</li>
+                    <li class="example">class Dice {<br>
+                        &emsp;constructor(sides=6) {<br>
+                            &emsp;&emsp;this.sides = sides;<br>
+                        &emsp;}<br>
+                        &emsp;roll() {<br>
+                            &emsp;&emsp;return Math.floor(this.sides * Math.random() + 1);<br>
+                        &emsp;}<br>
+                    }
+                    </li>
+                    <li>Naming convention: names of constructor functions or class declarations are capitalized</li>
+                    <li>Class declaration is more preferable</li>
+                </ul>
+            </li>
+
+            <li>Create static methods using the static keyword
+                <ul>
+                    <li>A static method is called by the class directly rather than by the instances of that class</li>
+                    <li>Instances of the class cannot call the method</li>
+                    <li class="example">
+                        static description() {<br>
+                        &emsp;return 'A way of choosing random numbers'<br>
+                        }
+                    </li>
+                </ul>
+            </li>
+
+            <li>Prototypes are useful for creating properties and methods that will stay the same throughout every instance
+                <ul>
+                    <li>You can override the declaration as instances' own property/method declarations will be of higher importance</li>
+                    <li>Discouraged to use arrays or objects as a default value in a prototype</li>
+                    <li>Any extra methods and properties that need to be augmented to the class declaration after it's been defined can be added to the prototype</li>
+                </ul>
+            </li>
+
+            <li>All properties and methods of an instance are automatically public
+                <ul>
+                    <li>This means they can be changed to any value with assignment, and this should be avoided</li>
+                    <li>The concept of variable scope can keep properties and methods private inside a class declaration</li>
+                    <li><img src="img/code1.JPG" alt="code snippet private example">
+                        <ul>
+                            <li>Because _color is in this scope, it can't be accessed outside it without the getColor() and setColor() methods</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>There is a prototype chain that goes up from the object all the way to the Object() constructor function
+                <ul>
+                    <li>When a method is called, it checks if the object has that method, then goes up to check if the object's prototype has the method, and it goes up through the prototype chain</li>
+                    <li>The prototype of the Object constructor has a large number of methods that are inherited by all objects</li>
                 </ul>
             </li>
         </ul>
