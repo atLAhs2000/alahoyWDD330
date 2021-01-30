@@ -20,6 +20,7 @@
 <body>
     <main>
         <h1>Week 4 Notes & Exercises</h1>
+        <p>I'm leaving my team's work here so I can refer back to it: <a href="week4exercise.html">Tic Tac Toe</a></p>
         <p>I decided to go along with one of the form examples. Here's the practice: <a href="search.html">A Searching Example</a></p>
 
         <h2>Chapter 8: Forms</h2>
@@ -85,22 +86,6 @@
                             <li>If a user clicks an input field and clicks away, the change event will not fire (but the blur event will)</li>
                         </ul>
                     </li>
-                </ul>
-            </li>
-
-            <li>Text input element objects have a value property that can be used to retrieve the text inside the field
-                <ul>
-                    <li>You can change the value inside the input using JS</li>
-                    <li>Alternatively, you can just use the placeholder attribute (I prefer this due to the fact that it does not count as a value)</li>
-                </ul>
-            </li>
-
-            <li>Three are different form controls that can make web pages more interactive
-                <ul>
-                    <li>Input: fields, including text, passwords, checkboxes, radio buttons, file uploads</li>
-                    <li>Select: menus for drop-down lists of options</li>
-                    <li>Textarea: elements for longer text entry</li>
-                    <li>Button: elements for submitting and resetting forms</li>
                 </ul>
             </li>
 
@@ -262,6 +247,20 @@
                 <ul>
                     <li>When a method is called, it checks if the object has that method, then goes up to check if the object's prototype has the method, and it goes up through the prototype chain</li>
                     <li>The prototype of the Object constructor has a large number of methods that are inherited by all objects</li>
+                </ul>
+            </li>
+
+            <li>Each property of an object has a number of attributes that provide info on the property
+                <ul>
+                    <li>Stored in a property descriptor
+                        <ul>
+                            <li>Value - value of the property and is "undefined" by default</li>
+                            <li>Writable - boolean value shows whether a property can be changed or not, false by default</li>
+                            <li>Enumerable - boolean value shows whether a property will show up when the object is displayed in a for in loop, false by default</li>
+                            <li>Configurable - boolean value shows whether property can be deleted or any of its attributes can be changed, false by default</li>
+                        </ul>
+                    </li>
+                    <li>Attributes are set to true after assignment</li>
                 </ul>
             </li>
         </ul>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #grid-container {
+            display: grid;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3,1fr);
+            text-align: center;
+            font-size: xx-large;
+        }
+
+        #grid-container div {
+            border: 1px solid black;
+            width: 100%;
+            height: 100%;
+            padding-top: 25%;
+            box-sizing: border-box;
+        }
+
+        #grid-container div:nth-child(3n) {
+            border-right: none;
+        }
+
+        #grid-container div:nth-child(n+7) {
+            border-bottom: none;
+        }
+
+        #grid-container div:nth-child(n-3) {
+            border-top: none;
+        }
+
+        #grid-container div:nth-child(1), #grid-container div:nth-child(4), #grid-container div:nth-child(7) {
+            border-left: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="grid-container">
+        <div id="r0c0"></div>
+        <div id="r0c1"></div>
+        <div id="r0c2"></div>
+        <div id="r1c0"></div>
+        <div id="r1c1"></div>
+        <div id="r1c2"></div>
+        <div id="r2c0"></div>
+        <div id="r2c1"></div>
+        <div id="r2c2"></div>
+    </div>
+
+    <button id="resetBtn">Reset</button>
+
+    <script>
+        //declare the variables
+        let board = document.getElementById('grid-container');
+        let playerOne = true;
+        let reset = document.getElementById('resetBtn');
+        let winning = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+        let currentBoard = ['','','','','','','','',''];
+        let moves = 0;
+        //give event listeners based on if the device allows touch events
+        if ('ontouchstart' in document.documentElement) {
+            board.addEventListener('touchend', touched);
+            reset.addEventListener('touchend', clearBoard);
+        } else {
+            board.addEventListener('click', touched);
+            reset.addEventListener('click', clearBoard);
+        }
+
+        //function that fires when a cell is touched or clicked
+        function touched(event) {
+            let cell = event.target;
+            let cellId = cell.id;
+            let row = parseInt(cellId[1]);
+            let column = parseInt(cellId[3]);
+            event.preventDefault();
+
+            let marker = playerOne? 'X':'O';
+            cell.textContent = marker;
+            currentBoard[row*3+column] = marker;
+            let winner = Math.abs(checkForWinner());
+            moves++;
+            if (winner !== 3 && moves === 9) {
+                alert('Tied!');
+            }
+            playerOne = !playerOne;
+        }
+
+        function clearBoard() {
+            [...board.children].forEach(x => x.textContent = '');
+            currentBoard = ['','','','','','','','',''];
+            moves = 0;
+            playerOne = true;
+        }
+
+        function checkForWinner() {
+            let sum = 0;
+            winning.every(x => {
+                sum = x.reduce((total, n) => {
+                    if (currentBoard[n] === ''){
+                        return false;
+                    } else {
+                        return total += currentBoard[n] === 'X'? 1:-1;
+                    }
+                }, 0);
+                if (Math.abs(sum) === 3) {
+                    declareWinner(sum);
+                    return false;
+                }
+            });
+            return sum;
+        }
+
+        function declareWinner(sum) {
+            let winner = sum === 3? 'Player One':'Player Two';
+            alert(`${winner} wins!`);
+        }
+    </script>
+
+</body>
+</html>
