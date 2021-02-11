@@ -6,12 +6,19 @@ var lsTask = (function () {
     };
 
     //prototype method to set local storage items
-    Constructor.prototype.set = function (data) {
+    Constructor.prototype.set = function (name, completion) {
         localStorage.setItem(this.id, JSON.stringify({
             timestamp: new Date().getTime(),
-            data: data
+            name: name,
+            completed: completion
         }));
     };
+
+    Constructor.prototype.get = function () {
+        var data = localStorage.getItem(this.id);
+        data = data ? JSON.parse(data) : null;
+        if (data) return data;
+    }
 
     return Constructor
 })();
