@@ -1,5 +1,5 @@
 import { addBtn, sortAll, sortComplete, sortIncomplete, date } from './modules/variables.js';
-import { addTask, displayTask, sortByAll, sortByComplete, sortByIncomplete } from './modules/utilities.js'
+import { addTask, displayTask, sortByAll, sortByComplete, sortByIncomplete } from './modules/utilities.js';
 
 
 //onload event to display tasks set by person in local storage
