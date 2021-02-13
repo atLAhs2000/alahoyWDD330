@@ -1,5 +1,5 @@
 //create object to be able to call localStorage
-export var lsTask = (function () {
+var lsTask = (function () {
     //constructor to create more
     var Constructor = function (name) {
         this.name = name;
@@ -23,3 +23,5 @@ export var lsTask = (function () {
 
     return Constructor
 })();
+
+export default lsTask;
