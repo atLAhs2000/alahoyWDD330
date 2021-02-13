@@ -1,11 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue&family=Oleo+Script&display=swap');
+
+//variables
+//colors
+$primary: #ebebeb;
+$secondary: #f5a25d;
+$tertiary: #fa7f72;
+$accent: #389393;
+
+//fonts
+$top-font:'Oleo Script', cursive;
+$second-font: 'Epilogue', sans-serif;
+
+//breakpoint sizes
+$break-small: 20em;
+$break-medium: 35em;
+$break-large: 60em;
+
+//mixins
+@mixin breakpoint($break) {
+    @if $break==large {
+        @media (min-width: $break-large) {
+            @content;
+        }
+    }
+    @else if ($break==medium) {
+        @media (min-width: $break-medium) {
+            @content;
+        }
+    }
+    @else if ($break==small) {
+        @media (min-width: $break-small) {
+            @content;
+        }
+    }
+    @else {
+        @media ($break) {
+            @content;
+        }
+    }
+}
+
+body {
+    margin: 0 auto;
+    background-color: $primary;
+}
+
+header, footer {
+    padding: 0.5em 2em;
+    background-color: $secondary;
+    color: $primary;
+}
+
+footer {
+    padding: 1.5em 2em;
+}
+
+main {
+    padding: 2em;
+}
+
+h1,
+h2 {
+    font-family: $top-font;
+    margin: 0;
+}
+
+h1 {
+    font-size: 3em;
+
+    @include breakpoint(medium) {
+        font-size: 4em;
+    }
+}
+
+h2 {
+    font-size: 2em;
+    color: $accent;
+    text-align: center;
+
+    @include breakpoint(medium) {
+        text-align: left;
+    }
+}
+
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: $second-font;
+    margin: 0;
+}
+
+p {
+    font-size: 0.8em;
+
+    @include breakpoint(medium) {
+        font-size: 1em;
+    }
+}
+
+a {
+    color: $accent;
+    text-decoration: none;
+
+    &:hover {
+        color: $tertiary;
+    }
+}
+
+button {
+    border-radius: 25px;
+    border: 0;
+    background-color: $accent;
+    color: $primary;
+    padding: 1em;
+
+    &:hover {
+        background-color: $secondary;
+    }
+
+    @include breakpoint(medium) {
+        font-size: 1em;
+    }
+}
+
+.completed,
+.active {
+    padding: 2em 1em;
+    margin: 0.5em auto;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: 2rem 1fr 3rem;
+    grid-gap: 0.5em;
+}
+
 .completed {
     background-color: lightgreen;
 }
 
+.completed .taskHeading {
+    text-decoration: line-through;
+}
+
 .active {
-    background-color: lightcoral;
+    background-color: lightgray;
 }
 
 .hide {
     display: none;
+}
+
+#taskList div input {
+    justify-self: end;
+    align-self: center;
+    width: 20px;
+    height: 20px;
+}
+
+#taskList div h3 {
+    align-self: center;
+}
+
+#taskList div button {
+    width: 80%;
+    border-radius: 100%;
+    border: 0;
+    background-color: $tertiary;
+    justify-self: center;
+    padding: 0.5em;
+
+    &:hover {
+        background-color: $accent;
+    }
+}
+
+#sort-sect {
+    margin: 2em auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0.5em;
+}
+
+#sort-sect button {
+    width: 100%;
+}
+
+#add-sect {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+#add-sect input {
+    padding: 0.8em;
+    margin: 0 1em;
+    border-radius: 25px;
+    border: 0;
+    font-size: 1em;
+    font-family: $second-font;
+
+    @include breakpoint(medium) {
+        width: 40%;
+    }
+
+    @include breakpoint(large) {
+        width: 80%;
+    }
 }

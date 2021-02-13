@@ -1,22 +1,31 @@
+import { listSect, numTasksLeft } from './variables.js';
+import lsTask from './ls.js';
+
 //function to add a task
 function addTask() {
     let taskName = document.getElementById('taskInput').value;
-    let task = new lsTask(taskName);
+    //check if there's actually a value inside the input
+    if (taskName === "") {
+        alert('Please enter a task.');
+    } else {
+        let task = new lsTask(taskName);
 
-    //set localStorage item with lsTask
-    task.set(taskName, false);
-
-    //clear input
-    document.getElementById('taskInput').value = '';
-    console.log(localStorage);
-
-    //display new task
-    displayTask(taskName);
+        //set localStorage item with lsTask
+        task.set(taskName, false);
+        
+        //clear input
+        document.getElementById('taskInput').value = '';
+        console.log(localStorage);
+        
+        //display new task
+        displayTask(taskName);
+    }
 }
 
 //function to affect completed tasks
 function completeTask(event) {
     let checkBox = event.target;
+    //get the specific task based on which checkbox was clicked
     let selectTask = JSON.parse(localStorage.getItem(checkBox.name));
     selectTask.completed = !selectTask.completed;
     localStorage.setItem(selectTask.name, JSON.stringify(selectTask));
@@ -26,6 +35,7 @@ function completeTask(event) {
 //function to delete tasks
 function deleteTask(event) {
     let delBtnClicked = event.target;
+    //find what was clicked and deletes the appropriate task
     if (delBtnClicked.tagName === 'I') {
         delBtnClicked = event.target.parentElement;
     }
@@ -62,6 +72,7 @@ function displayTask(name) {
     deleteBtn.addEventListener('click', deleteTask);
 
     listSect.appendChild(taskDiv);
+    numTasksLeft.textContent = checkHowManyLeft();
 }
 
 //function to check if a task is completed and add/remove the appropriate classes
@@ -81,6 +92,7 @@ function checkIfCompleted(task, checkbox, div) {
     }
 }
 
+//function to sort tasks by all using classes
 function sortByAll() {
     let divArray = document.getElementsByTagName('div');
     for (let i = 0; i < divArray.length; i++) {
@@ -91,6 +103,8 @@ function sortByAll() {
     }
 }
 
+
+//function to sort tasks by completed
 function sortByComplete() {
     let divArray = document.getElementsByTagName('div');
     for (let i = 0; i < divArray.length; i++) {
@@ -105,6 +119,7 @@ function sortByComplete() {
     }
 }
 
+//sort by incomplete
 function sortByIncomplete() {
     let divArray = document.getElementsByTagName('div');
     for (let i = 0; i < divArray.length; i++) {
@@ -118,3 +133,18 @@ function sortByIncomplete() {
         }
     }
 }
+
+//function to check how many tasks are left
+function checkHowManyLeft() {
+    let tasksLeft = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+        let listedTask = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        if (listedTask.completed === false) {
+            tasksLeft++;
+        }
+    }
+
+    return tasksLeft;
+}
+
+export { addTask, completeTask, deleteTask, displayTask, checkIfCompleted, sortByAll, sortByComplete, sortByIncomplete, checkHowManyLeft };

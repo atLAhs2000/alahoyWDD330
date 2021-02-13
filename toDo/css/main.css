@@ -1,13 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue&family=Oleo+Script&display=swap");
+body {
+  margin: 0 auto;
+  background-color: #ebebeb;
+}
+
+header, footer {
+  padding: 0.5em 2em;
+  background-color: #f5a25d;
+  color: #ebebeb;
+}
+
+footer {
+  padding: 1.5em 2em;
+}
+
+main {
+  padding: 2em;
+}
+
+h1,
+h2 {
+  font-family: "Oleo Script", cursive;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3em;
+}
+@media (min-width: 35em) {
+  h1 {
+    font-size: 4em;
+  }
+}
+
+h2 {
+  font-size: 2em;
+  color: #389393;
+  text-align: center;
+}
+@media (min-width: 35em) {
+  h2 {
+    text-align: left;
+  }
+}
+
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: "Epilogue", sans-serif;
+  margin: 0;
+}
+
+p {
+  font-size: 0.8em;
+}
+@media (min-width: 35em) {
+  p {
+    font-size: 1em;
+  }
+}
+
+a {
+  color: #389393;
+  text-decoration: none;
+}
+a:hover {
+  color: #fa7f72;
+}
+
+button {
+  border-radius: 25px;
+  border: 0;
+  background-color: #389393;
+  color: #ebebeb;
+  padding: 1em;
+}
+button:hover {
+  background-color: #f5a25d;
+}
+@media (min-width: 35em) {
+  button {
+    font-size: 1em;
+  }
+}
+
+.completed,
+.active {
+  padding: 2em 1em;
+  margin: 0.5em auto;
+  border-radius: 25px;
+  display: grid;
+  grid-template-columns: 2rem 1fr 3rem;
+  grid-gap: 0.5em;
+}
+
 .completed {
-    background-color: lightgreen;
+  background-color: lightgreen;
+}
+
+.completed .taskHeading {
+  text-decoration: line-through;
 }
 
 .active {
-    background-color: lightcoral;
+  background-color: lightgray;
 }
 
 .hide {
-    display: none;
+  display: none;
+}
+
+#taskList div input {
+  justify-self: end;
+  align-self: center;
+  width: 20px;
+  height: 20px;
+}
+
+#taskList div h3 {
+  align-self: center;
+}
+
+#taskList div button {
+  width: 80%;
+  border-radius: 100%;
+  border: 0;
+  background-color: #fa7f72;
+  justify-self: center;
+  padding: 0.5em;
+}
+#taskList div button:hover {
+  background-color: #389393;
+}
+
+#sort-sect {
+  margin: 2em auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5em;
+}
+
+#sort-sect button {
+  width: 100%;
+}
+
+#add-sect {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+#add-sect input {
+  padding: 0.8em;
+  margin: 0 1em;
+  border-radius: 25px;
+  border: 0;
+  font-size: 1em;
+  font-family: "Epilogue", sans-serif;
+}
+@media (min-width: 35em) {
+  #add-sect input {
+    width: 40%;
+  }
+}
+@media (min-width: 60em) {
+  #add-sect input {
+    width: 80%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
