@@ -15,7 +15,6 @@ function addTask() {
         
         //clear input
         document.getElementById('taskInput').value = '';
-        console.log(localStorage);
         
         //display new task
         displayTask(taskName);
