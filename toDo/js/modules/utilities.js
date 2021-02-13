@@ -30,6 +30,7 @@ function completeTask(event) {
     selectTask.completed = !selectTask.completed;
     localStorage.setItem(selectTask.name, JSON.stringify(selectTask));
     checkIfCompleted(selectTask, checkBox, checkBox.parentElement);
+    numTasksLeft.textContent = checkHowManyLeft();
 }
 
 //function to delete tasks
