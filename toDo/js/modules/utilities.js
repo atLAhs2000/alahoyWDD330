@@ -43,6 +43,7 @@ function deleteTask(event) {
     let taskDiv = delBtnClicked.parentElement;
     localStorage.removeItem(delBtnClicked.id);
     taskDiv.parentNode.removeChild(taskDiv);
+    numTasksLeft.textContent = checkHowManyLeft();
 }
 
 //function to display tasks
