@@ -1,5 +1,5 @@
 import { listSect, numTasksLeft } from './variables.js';
-import lsTask from './ls.js';
+import { lsTask } from './ls.js';
 
 //function to add a task
 function addTask() {
