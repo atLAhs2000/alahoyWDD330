@@ -1,5 +1,5 @@
 import { addBtn, sortAll, sortComplete, sortIncomplete, date } from './modules/variables.js';
-import lsTask './modules/ls.js';
+import lsTask from './modules/ls.js';
 import { addTask, displayTask, sortByAll, sortByComplete, sortByIncomplete } './modules/utilities.js'
 
 
