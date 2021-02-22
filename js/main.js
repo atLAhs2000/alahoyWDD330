@@ -22,6 +22,10 @@ const links = [
     {
         label: "toDo Challenge",
         url: "toDo/index.html"
+    },
+    {
+        label: "Week 7 Exercise/Notes",
+        url: "week7/index.html"
     }
 ]
 
