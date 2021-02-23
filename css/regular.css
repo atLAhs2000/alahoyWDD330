@@ -35,13 +35,12 @@ ul>li li {
     margin: 0;
 }
 
+img {
+    width: 50%;
+}
+
 footer {
     margin: 0 auto;
     width: 75%;
     padding: 2em;
-}
-
-.skew-ex {
-    transform: skew(15deg, 4deg);
-    margin: 3em 0;
 }

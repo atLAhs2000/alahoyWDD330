@@ -12,8 +12,9 @@
             line-height: 1.5;
         }
 
-        img {
-            width: 80%;
+        .skew-ex {
+            transform: skew(15deg, 4deg);
+            margin: 3em 0;
         }
     </style>
 </head>
@@ -115,6 +116,97 @@
             <li>Be careful when choosing your order of transform functions
                 <ul>
                     <li>If you decide to rotate an element before translating, it will look differently than if you would translate before rotating</li>
+                    <li>Here's an example from the textbook
+                        <ul>
+                            <li><img src="img/orderoftranslate.JPG" alt="Order of transformation matters"></li>
+                            <li>The rightmost square - <span class="example">transform: translateX(200px) rotate(135deg);</span></li>
+                            <li>The leftmost square - <span class="example">transform: rotate(135deg) translateX(200px);</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>Transitions allow values of CSS properties to change over time, providing simple animations
+                <ul>
+                    <li>If a link changes color on hover, you can make it gradual through the transition property
+                        <ul>
+                            <li>If it's not supported by the browser, the change will be immediate, which is still okay</li>
+                        </ul>
+                    </li>
+                    <li>CSS transitions are declared along with the regular styles on an element</li>
+                    <li>Here are the steps to create a simple transition using only CSS:
+                        <ol>
+                            <li>Declare the original state of the element in the default style declaration</li>
+                            <li>Declare the final state of your transitioned element; for example, a :hover state</li>
+                            <li>Include the transition functions in your default style declaration using the transition properties, which include...
+                                <ul>
+                                    <li>transition-property</li>
+                                    <li>transition-duration</li>
+                                    <li>transition-timing-function</li>
+                                    <li>transition-delay</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>Note that transition is declared in the default or originating state</li>
+                </ul>
+            </li>
+
+            <li>There are 4 properties that you can address with transition
+                <ul>
+                    <li>transition-property is necessary as it selects what CSS rule you want to apply the transition to</li>
+                    <li>transition-duration sets how long the transition will take for the element to go from its original state to its transitioned state</li>
+                    <li>transition-timing-function sets the speed at which the transition takes place, which can be anything ranging from starting slow and ending fast to starting fast and ending slow</li>
+                    <li>transition-delay sets how long the transition is delayed before it starts
+                        <ul>
+                            <li>Note that you can use a negative delay for specific effects that require the transition to jump to a different part of the transition</li>
+                        </ul>
+                    </li>
+                    <li>The transition property is shorthand for these properties
+                        <ul>
+                            <li class="example">transition: transform 0.2s ease-out 50ms;</li>
+                            <li>It can be in any order</li>
+                            <li>However, if you include a delay, a duration must precede it</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>Unlike transitions, CSS animations let you control each step of an animation via keyframes
+                <ul>
+                    <li>You can define keyframes and then use them later on
+                        <ul>
+                            <li class="example">@keyframes appearDisappear { 0%, 100% { opacity: 0; } 20%, 80% { opacity: 1; } }</li>
+                        </ul>
+                    </li>
+                    <li>You can attach the animation to the "animation-name" property
+                        <ul>
+                            <li class="example">animation-name: appearDisappear;</li>
+                        </ul>
+                    </li>
+                    <li>Similarly to transition, animation has a duration property and timing function and delay</li>
+                    <li>It also has other features like "animation-direction" and "animation-iteration-count"</li>
+                    <li>"animation" is its own shorthand as well
+                        <ul>
+                            <li class="example">animation: 300ms ease-in alternate 5s backwards appearDisappear;</li>
+                        </ul>
+                    </li>
+                    <li>Be careful with naming your animation-name as using animation property key terms like "forwards", "running", or "alternate" can cause issues</li>
+                </ul>
+            </li>
+
+            <li>Both transition and animation can be grouped with multiple of their own calls
+                <ul>
+                    <li>You separate with a comma
+                        <ul>
+                            <li class="example">transition: transform 0.2s ease-out 50ms, color 0.1s linear 50ms;</li>
+                        </ul>
+                    </li>
+                    <li>You can do the same thing with animations
+                        <ul>
+                            <li class="example">animation: animationOne 300ms ..., animationTwo 600ms ...;</li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -126,8 +218,7 @@
 
         <h2>Questions</h2>
         <ul>
-            <li>Would you only use the call() and apply() method with objects? Why else would you use it and when?</li>
-            <li>Why would you want to define a function only to have it rewrite itself? When is this used in a professional setting?</li>
+            <li>First question</li>
         </ul>
     </main>
     
