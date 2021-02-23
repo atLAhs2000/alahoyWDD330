@@ -40,3 +40,8 @@ footer {
     width: 75%;
     padding: 2em;
 }
+
+.skew-ex {
+    transform: skew(15deg, 4deg);
+    margin: 3em 0;
+}
