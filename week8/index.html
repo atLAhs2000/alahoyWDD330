@@ -213,19 +213,42 @@
         </ul>
 
         <h2>Chapter 12: Canvas, SVG, Drag & Drop</h2>
+        <p>Essentially, Canvas is for drawing in a two-dimensional space with JavaScript</p>
+        <p>Put a canvas in the HTML file.</p>
+        <p class="example">&emsp;&emsp;&#60;canvas id="myCanvas" class="myCanvas" width="200" height="200"&#62;<br>
+            &emsp;&emsp;&emsp;&emsp;Sorry! Your browser doesn't support Canvas.<br>
+            &emsp;&emsp;&#60;/canvas&#62;
+        </p>
+        <p>The text inside the canvas tag will only show if it is not supported by the browser. After placing the tag, you can get the Canvas object via the ID in JS. Then you can draw.Here is a list of resources for further reading on using canvas:</p>
         <ul>
-            <li></li>
+            <li><a href="https://dev.opera.com/articles/html5-canvas-basics/">"HTML5 Canvas - the Basics" at Dev.Opera</a></li>
+            <li><a href="https://developer.apple.com/safari/resources/#documentation/AudioVideo/Conceptual/HTML-canvas-guide/Introduction/Introduction.html">Safari's HTML5 Canvas Guide</a></li>
+        </ul>
+        <p>SVG is another way for developers to create shapes. There are differences between the two.</p>
+        <ul>
+            <li>Canvas allows for pixel manipulation
+                <ul>
+                    <li>Operates in immediate mode; you can't add more to what's already been made inside a canvas</li>
+                    <li>You can turn something inside a canvas black and white</li>
+                    <li>No access to what's drawn on the canvas via the DOM</li>
+                    <li>Faster than SVG and generally better for designing a game with a lot of animations</li>
+                </ul>
+            </li>
+            <li>Anything drawn in SVG is accessible via the DOM
+                <ul>
+                    <li>Operates in retained mode</li>
+                    <li>You can't manipulate SVG the way you manipulate pixels on canvas</li>
+                </ul>
+            </li>
+        </ul>
+        <p>If you need to paint pixels to a screen without concerns about the ability to retrieve and modify shapes, canvas would be better. If you need to be able to access and change specific aspects of your graphics, SVG may be more appropriate.</p>
+        <p>The chapter has a lot of interesting info on Drag & Drop, so here's two resources for further reading on it:</p>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API">Mozilla Developer Network's Drag & Drop Documentation</a></li>
+            <li><a href="https://html.spec.whatwg.org/multipage/dnd.html">W3C's Drag & Drop Specification</a></li>
         </ul>
 
-        <h2>Definitions</h2>
-        <ol>
-            <li><b></b>:</li>
-        </ol>
-
-        <h2>Questions</h2>
-        <ul>
-            <li>First question</li>
-        </ul>
+        <h2>I didn't really have any questions this time...</h2>
     </main>
     
     <footer>
