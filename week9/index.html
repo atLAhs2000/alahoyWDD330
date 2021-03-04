@@ -74,11 +74,44 @@
                         </ul>
                     </li>
                     <li>history is a property that can be used to access info about previously visited paged in the current browser session</li>
+                    <li>screen contains info about the screen the browser is displayed on, including width and height</li>
+                </ul>
+            </li>
+
+            <li>Down the tree of window objects is the Document object
+                <ul>
+                    <li>One method of the document object is write(); this has been discouraged since it mixes HTML and JavaScript</li>
+                    <li>You can use cookies with the document object
+                        <ul>
+                            <li>Cookies can be used to personalize a user's experience on a website</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>window also has some useful methods for scheduling the execution of a function and for repeatedly executing functions at regular intervals
+                <ul>
+                    <li>setTimeout() accepts a callback to a function (first parameter) and a number of milliseconds (second parameter)
+                        <ul>
+                            <li class="example">window.setTimeout( () => alert("Time's up!"), 3000);</li>
+                            <li>This method returns an integer that is an ID and can be used to reference a particular timeout; this integer can then be used with window.clearTimeout()</li>
+                        </ul>
+                    </li>
+                    <li class="example">window.clearTimeout(int);</li>
+                    <li>setInterval() will repeatedly invoke the callback function after every given number of milliseconds
+                        <ul>
+                            <li>To stop this, use clearInterval() with repeat as an argument because the setInterval method returns an ID that is assigned to the variable repeat</li>
+                        </ul>
+                    </li>
+                    <li>Be careful of using "this" with timing methods because "this" will be bound to the window object</li>
                 </ul>
             </li>
         </ul>
 
         <h2>Questions</h2>
+        <ul>
+            <li>I have seen websites that still use cookies. The textbook mentions that it's being used less due to localStorage. Is there any situation where you would willingly opt for cookies instead of localStorage?</li>
+        </ul>
     </main>
     
     <footer>
