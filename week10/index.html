@@ -21,7 +21,130 @@
 <body>
     <main>
         <h1>Week 10 Notes</h1>
-        <p>Leaving the quake activity <a href="quakes/quakes.html">here</a> for reference.</p>
+        <p>Leaving the quake activity <a target="_blank" href="quakes/index.html">here</a> for reference.</p>
+
+        <h2>Constraint Validation API</h2>
+        <p>Most browsers support the Constraint Validation API.</p>
+        <ul>
+            <li>The API consists of a set of methods and properties for form element DOM interfaces
+                <ul>
+                    <li>HTMLButtonElement</li>
+                    <li>HTMLFieldSetElement</li>
+                    <li>HTMLInputElement</li>
+                    <li>HTMLOutputElement</li>
+                    <li>HTMLSelectElement</li>
+                    <li>HTMLTextAreaElement</li>
+                </ul>
+            </li>
+
+            <li>These elements then have properties, and the list can be found on <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">MDN</a>
+                <ul>
+                    <li>patternMismatch, for example, returns true if the value does not match the specified pattern and false if it does</li>
+                    <li>tooLong returns true if the value is longer than the max length specified</li>
+                    <li>Most properties will return a bool</li>
+                    <li>These properties will also have methods available
+                        <ul>
+                            <li>checkValidity returns true if the element's value has no validity issues</li>
+                            <li>setCustomValidity(<i>message</i>) would allow you to add a custom error message to the element for specific errors</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>The browser automatically displays error messages when the input value is incorrectly done
+                <ul>
+                    <li>This leads to two drawbacks
+                        <ul>
+                            <li>There is no standard way to change their style with CSS</li>
+                            <li>Dependent on browser locale, meaning you can have a page in one language but an error message displayed in another one</li>
+                        </ul>
+                    </li>
+                    <li>MDN goes through a detailed example, so I worked along with it <a target="_blank" href="examples/custom-validation.html">here</a></li>
+                </ul>
+            </li>
+
+            <li>You can build a validation system without using the API
+                <ul>
+                    <li>This would take a bit more coding</li>
+                    <li>The example is on the MDN link above</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Using Fetch</h2>
+        <p>The Fetch API provides a JS interface for accessing and manipulating parts of the HTTP pipeline. It also provides a global fetch() method which allows devs to fetch resources asynchronously across the network. All information comes from <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">MDN's post on Fetch</a>.</p>
+        <ul>
+            <li>Three main differences from jQuery.ajax()
+                <ul>
+                    <li>The Promise returned from fetch() won't reject on HTTP error status, even if the response is HTTP 404 or 500
+                        <ul>
+                            <li>Instead, it will be resolved normally with an "ok" status set to false, and it will only reject on network failure or if anything prevented the request from completing</li>
+                        </ul>
+                    </li>
+                    <li>fetch() won't send cross-origin cookies unless you set the credentials init option</li>
+                </ul>
+            </li>
+
+            <li>The simplest form of a fetch request would have you pass in a URL alone, but is can accept an optional second parameter
+                <ul>
+                    <li>This second parameter is an init object that gives you control over different settings
+                        <ul>
+                            <li>They are listed in this MDN <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch">page</a></li>
+                        </ul>
+                    </li>
+                    <li>Here is an example of using an init object to specify special requests
+                        <ul>
+                            <li><img src="img/fetchrequest.JPG" alt="example of special request init object"></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>A fetch() promise would reject with a TypeError under specific conditions which means certain errors would not stop the fetch()
+                <ul>
+                    <li>It may reject when a network error is encountered or CORS is misconfigured on the server side</li>
+                    <li>A 404 would not constitute a network error</li>
+                    <li>To check for a successful fetch() accurately, you would need to check that the promise is resolved and that the Response.ok property returns a "true"
+                        <ul>
+                            <li>An example of this is in the Quakes Activity from this week</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>You can pass in a request object, made with the Request() constructor, as an argument in fetch()
+                <ul>
+                    <li>As opposed to simply passing in a path, you can create a request object
+                        <ul>
+                            <li class="example">const myRequest = new Request('flowers.jpg', { //init settings });</li>
+                        </ul>
+                    </li>
+                    <li>You could even pass in an existing request object to create a copy of it
+                        <ul>
+                            <li class="example">const anotherRequest = new Request(myRequest, myInit);</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>Response instances are returned when fetch() promises are resolved
+                <ul>
+                    <li>Most common response properties you will use are:
+                        <ul>
+                            <li>Response.status - an integer containing the status code (default: 200)</li>
+                            <li>Response.statusText - a string corresponding to the HTTP status code message (default " ")</li>
+                            <li>Response.ok - a boolean checking that the status is in the range of 200-299</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Questions</h2>
+        <ol>
+            <li>It's strange because I've practiced coding with file reading in another class, but it's not something I've worked with throughout studying web development. Where would you use it? Would this involve letting users upload files and the website doing something with it or something like that? Why is fetch() associated with it?</li>
+            <li>Is there a case where you could want to duplicate a request and pass it in a fetch()? How is it used?</li>
+        </ol>
     </main>
     
     <footer>

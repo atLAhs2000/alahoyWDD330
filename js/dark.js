@@ -11,18 +11,10 @@ cssLink.type = 'text/css';
 //check what time it is
 if (d.getHours() > 15) {
     //check if index html file is in root or in a folder
-    if (document.title == 'Portfolio Directory') {
-        cssLink.href = 'css/dark.css';
-    } else {
-        cssLink.href = '../css/dark.css';
-    }
+    cssLink.href = (document.title == 'Portfolio Directory') ? 'css/dark.css' : '../css/dark.css';
 } else {
     //check if file is in root or folder
-    if (document.title == 'Portfolio Directory') {
-        cssLink.href = 'css/light.css';
-    } else {
-        cssLink.href = '../css/light.css';
-    }
+    cssLink.href = (document.title == 'Portfolio Directory') ? 'css/light.css' : '../css/light.css';
 }
 
 //append link to the head
