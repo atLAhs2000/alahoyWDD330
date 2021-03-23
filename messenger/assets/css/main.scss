@@ -1,0 +1,119 @@
+// import
+@import 'scss/animations';
+
+// variables
+$primary-color: #f3f4ed;
+$secondary-color: #155263;
+$tertiary-color: #ff6f3c;
+$link-color: #ffc93c;
+$accent: #ff9a3c;
+
+// breakpoint sizes
+$break-small: 20em;
+$break-medium: 35em;
+$break-large: 60em;
+
+// mixins
+@mixin breakpoint($break) {
+    @if $break==large {
+        @media (min-width: $break-large) {
+            @content;
+        }
+    }
+    @else if ($break==medium) {
+        @media (min-width: $break-medium) {
+            @content;
+        }
+    }
+    @else if ($break==small) {
+        @media (min-width: $break-small) {
+            @content;
+        }
+    }
+    @else {
+        @media ($break) {
+            @content;
+        }
+    }
+}
+
+// selectors
+body {
+    background-color: $primary-color;
+    margin: 0;
+    font: 1em 'Helvetica', sans-serif;
+}
+
+header,
+footer {
+    background-color: $secondary-color;
+    color: $primary-color;
+}
+
+header {
+    padding: 2em 1em;
+}
+
+footer {
+    padding: 1.8em 0.8em;
+    overflow: hidden;
+}
+
+main {
+    text-align: center;
+    // media query for medium
+    @include breakpoint(medium) {
+        padding: 1em;
+        text-align: left;
+    }
+}
+
+h1 {
+    margin: 0;
+    color: $primary-color;
+    font: 2.8em 'Major Mono Display', monospace;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $tertiary-color;
+    font: 1.7em 'Source Code Pro', monospace;
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+    &:hover {
+        color: $primary-color;
+        transition: color 0.2s ease-in;
+    }
+}
+
+.blink-type {
+    display: inline;
+    opacity: 1;
+    background-color: $tertiary-color;
+    height: 100%;
+    width: 2px;
+    animation: blink-animation 2s linear infinite;
+    -webkit-animation: blink-animation 2s linear infinite;
+}
+
+div.phone-case {
+    width: 100%;
+    height: 800px;
+    background-color: darken(darkgray, 40%);
+    display: flex;
+    border-radius: 25px;
+    align-items: center;
+    // phone screen
+    div.phone-screen {
+        width: 100%;
+        height: 90%;
+        margin: auto;
+        background-color: white;
+    }
+}

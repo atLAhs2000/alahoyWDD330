@@ -38,6 +38,10 @@ const links = [
     {
         label: "Week 10 Notes",
         url: "week10/index.html"
+    },
+    {
+        label: "Block 2 Challenge: Messenger Simulation",
+        url: "messenger/index.html"
     }
 ]
 
