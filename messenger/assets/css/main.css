@@ -70,13 +70,18 @@ a:hover {
 }
 
 .blink-type {
-  display: inline;
-  opacity: 1;
+  display: none;
   background-color: #ff6f3c;
   height: 100%;
   width: 2px;
-  animation: blink-animation 2s linear infinite;
-  -webkit-animation: blink-animation 2s linear infinite;
+}
+@media (min-width: 35em) {
+  .blink-type {
+    display: inline;
+    opacity: 1;
+    animation: blink-animation 2s linear infinite;
+    -webkit-animation: blink-animation 2s linear infinite;
+  }
 }
 
 div.phone-case {
@@ -92,6 +97,13 @@ div.phone-case div.phone-screen {
   height: 90%;
   margin: auto;
   background-color: white;
+}
+
+section.options {
+  margin: 0.8em;
+}
+section.options div:nth-child(1) {
+  margin: 0.5em;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -93,13 +93,16 @@ a {
 }
 
 .blink-type {
-    display: inline;
-    opacity: 1;
+    display: none;
     background-color: $tertiary-color;
     height: 100%;
     width: 2px;
-    animation: blink-animation 2s linear infinite;
-    -webkit-animation: blink-animation 2s linear infinite;
+    @include breakpoint(medium) {
+        display: inline;
+        opacity: 1;
+        animation: blink-animation 2s linear infinite;
+        -webkit-animation: blink-animation 2s linear infinite;
+    }
 }
 
 div.phone-case {
@@ -115,5 +118,12 @@ div.phone-case {
         height: 90%;
         margin: auto;
         background-color: white;
+    }
+}
+
+section.options {
+    margin: 0.8em;
+    div:nth-child(1) {
+        margin: 0.5em;
     }
 }
