@@ -34,5 +34,5 @@ function update() {
     //let numContactPlus =  document.createElement('span');
     numOfContacts = numContact;
     contact.innerHTML = nameContact;
-    document.getElementById('contact-letter').textContent = nameContact.charAt(0).toUpperCase();
+    document.getElementById('contact-letter').innerHTML = `<p>${nameContact.charAt(0).toUpperCase()}</p>`;
 }
