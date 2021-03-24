@@ -1,0 +1,17 @@
+@mixin grid-container($col-repeat, $row-repeat: none) {
+    display: grid;
+    grid-template-columns: repeat($col-repeat, 1fr);
+
+    @if ($row-repeat==none) {
+        grid-template-rows: none;
+    }
+
+    @else {
+        grid-template-rows: repeat($row-repeat, 1fr);
+    }
+}
+
+@mixin grid-column-row($col-start, $col-span: 1, $row-start: 1, $row-span: 1) {
+    grid-column: $col-start / span $col-span;
+    grid-row: $row-start / span $row-span;
+}

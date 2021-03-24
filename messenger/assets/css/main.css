@@ -92,18 +92,79 @@ div.phone-case {
   border-radius: 25px;
   align-items: center;
 }
-div.phone-case div.phone-screen {
+
+div.phone-screen {
   width: 100%;
-  height: 90%;
+  height: 88%;
   margin: auto;
   background-color: white;
+  display: grid;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+}
+div.phone-screen div.text-header {
+  grid-column: 1/span -span;
+  grid-row: 1/span 2;
+  padding: 0.5em;
+  background-color: lightgray;
+}
+div.phone-screen div.text-header div {
+  background-color: purple;
+  color: white;
+  border-radius: 150px;
+  font-size: 1.8em;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+div.phone-screen div.text-header div p {
+  margin: 0;
+  position: relative;
+  top: 10px;
+}
+div.phone-screen div.text-header span {
+  display: block;
+}
+div.phone-screen div.messages {
+  grid-column: 1/span -span;
+  grid-row: 3/span 11;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+div.phone-screen div.messages div {
+  max-width: 95%;
+  margin: 0 auto;
+}
+div.phone-screen div.messages div div {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 80%;
+}
+div.phone-screen div.text-footer {
+  grid-column: 1/span -span;
+  grid-row: 14/span 1;
+  background-color: lightgray;
 }
 
 section.options {
   margin: 0.8em;
 }
-section.options div:nth-child(1) {
-  margin: 0.5em;
+section.options div {
+  margin: 0.4em;
+}
+
+.received {
+  text-align: left;
+}
+
+.sent {
+  text-align: right;
+}
+.sent div {
+  margin: 0;
 }
 
 /*# sourceMappingURL=main.css.map */

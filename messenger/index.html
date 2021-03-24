@@ -18,15 +18,15 @@
     </header>
 
     <main>
-        <h2>Messenger Simulation<div class="blink-type">&nbsp;</div></h2>
+        <h2>Messenger Simulation<span class="blink-type">&nbsp;</span></h2>
         <section class="phone">
             <div class="phone-case">
                 <div class="phone-screen">
                     <div class="text-header">
-                        <div>U</div>
-                        <span>Unknown Number</span>
+                        <div id="contact-letter"><p>U</p></div>
+                        <span id="contact-name">Unknown Number</span>
                     </div>
-                    <div class="messages"></div>
+                    <div class="messages" id="messages">&nbsp;</div>
                     <div class="text-footer">
                         <input type="text">
                         <button>Send</button>
@@ -37,15 +37,29 @@
         
         <section class="options">
             <div>
-                <label for="name-input">Name:</label>
-                <input name="name-input" type="text">
+                <label>Device</label>
+                <button type="button">Phone</button>
+                <button type="button">Tablet</button>
             </div>
             <div>
-                <label for="message"></label>
-                <textarea name="message" id="message-box" cols="50" rows="10">Message...</textarea>
+                <label for="contact-amount">Number of contacts:</label>
+                <input name="contact-amount" type="number" id="numContacts">
             </div>
-            <button>Receive</button>
-            <button>Send</button>
+            <div>
+                <label for="name-contact">Name of contact/chat:</label>
+                <input name="name-contact" type="text" id="nameContact">
+            </div>
+            <div>
+                <label for="name-input">Name:</label>
+                <input type="text" name="name-input" id="name">
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message-box" cols="50" rows="10"></textarea>
+            </div>
+            <button type="button" id="receiveBtn">Receive</button>
+            <button type="button" id="sendBtn">Send</button>
+            <button type="button" id="updateBtn">Update</button>
         </section>
     </main>
 
