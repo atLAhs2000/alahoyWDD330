@@ -100,24 +100,6 @@ div.phone-screen {
         @include grid-column-row(1, -span, 1, 2);
         padding: 0.5em;
         background-color: lightgray;
-        div {
-            background-color: purple;
-            color: white;
-            border-radius: 150px;
-            font-size: 1.8em;
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-        div p {
-            margin: 0;
-            position: relative;
-            top: 10px;
-        }
-        span {
-            display: block;
-        }
     }
     // messages portion
     div.messages {
@@ -145,6 +127,8 @@ div.phone-screen {
 
 section.options {
     margin: 0.8em;
+    background-color: $secondary-color;
+    color: $accent;
     div {
         margin: 0.4em;
     }

@@ -109,24 +109,6 @@ div.phone-screen div.text-header {
   padding: 0.5em;
   background-color: lightgray;
 }
-div.phone-screen div.text-header div {
-  background-color: purple;
-  color: white;
-  border-radius: 150px;
-  font-size: 1.8em;
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-div.phone-screen div.text-header div p {
-  margin: 0;
-  position: relative;
-  top: 10px;
-}
-div.phone-screen div.text-header span {
-  display: block;
-}
 div.phone-screen div.messages {
   grid-column: 1/span -span;
   grid-row: 3/span 11;
@@ -151,6 +133,8 @@ div.phone-screen div.text-footer {
 
 section.options {
   margin: 0.8em;
+  background-color: #155263;
+  color: #ff9a3c;
 }
 section.options div {
   margin: 0.4em;
@@ -164,6 +148,7 @@ section.options div {
   text-align: right;
 }
 .sent div {
+  text-align: right;
   margin: 0;
 }
 
