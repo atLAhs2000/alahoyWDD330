@@ -14,6 +14,22 @@
     opacity: 0;
   }
 }
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 body {
   background-color: #f3f4ed;
   margin: 0;
@@ -51,13 +67,19 @@ h1 {
   font: 2.8em "Major Mono Display", monospace;
 }
 
-h2,
+h2 {
+  color: #ff6f3c;
+  font: 1.8em "Source Code Pro", monospace;
+}
+
 h3,
 h4,
 h5,
 h6 {
   color: #ff6f3c;
-  font: 1.7em "Source Code Pro", monospace;
+  font: 1em "Source Code Pro", monospace;
+  margin: 0;
+  margin-top: 1em;
 }
 
 a {
@@ -105,13 +127,13 @@ div.phone-screen {
 }
 div.phone-screen div.text-header {
   grid-column: 1/span -span;
-  grid-row: 1/span 2;
+  grid-row: 1/span 1;
   padding: 0.5em;
   background-color: lightgray;
 }
 div.phone-screen div.messages {
   grid-column: 1/span -span;
-  grid-row: 3/span 11;
+  grid-row: 2/span 12;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -131,25 +153,67 @@ div.phone-screen div.text-footer {
   background-color: lightgray;
 }
 
-section.options {
-  margin: 0.8em;
-  background-color: #155263;
-  color: #ff9a3c;
+.received,
+.sent {
+  margin-bottom: 15px !important;
 }
-section.options div {
-  margin: 0.4em;
+.received div,
+.sent div {
+  padding: 0.8em;
+  border-radius: 15px;
+  display: inline-block;
+  max-width: 60%;
 }
 
 .received {
   text-align: left;
+}
+.received div:nth-child(1) {
+  padding: 0.2em;
+  display: block;
+}
+.received div:nth-child(2) {
+  background-color: lightgray;
+  margin-left: 10px;
 }
 
 .sent {
   text-align: right;
 }
 .sent div {
-  text-align: right;
-  margin: 0;
+  background-color: teal;
+  color: white;
+  margin-right: 0;
+}
+
+.hidden {
+  display: none;
+  animation: fade-out 0.3s ease-out;
+}
+
+.options {
+  margin: 0.8em;
+  background-color: #155263;
+  color: #ff9a3c;
+}
+.options div {
+  margin: 0.4em;
+}
+
+.device-choice {
+  display: none;
+}
+@media (min-width: 35em) {
+  .device-choice {
+    display: block;
+  }
+}
+
+#optionalNames {
+  animation: fade-in 0.3s ease-in;
+}
+#optionalNames div {
+  animation: fade-in 0.3s ease-in;
 }
 
 /*# sourceMappingURL=main.css.map */

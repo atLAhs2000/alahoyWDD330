@@ -23,7 +23,7 @@
             <div class="phone-case">
                 <div class="phone-screen">
                     <div class="text-header" id="text-header">
-                        <span id="contact-name">Unknown Number</span>
+                        <div id="contact-name">Unknown Number</div>
                     </div>
                     <div class="messages" id="messages">&nbsp;</div>
                     <div class="text-footer">
@@ -36,33 +36,35 @@
         
         <section class="options">
             <h3>Options</h3>
-            <div>
-                <label>Device</label>
+            <div class="device-choice">
+                <label>Device:</label>
                 <button type="button">Phone</button>
                 <button type="button">Tablet</button>
             </div>
-            <div>
+            <div class="name-options">
                 <label for="contact-amount">Number of contacts:</label>
-                <input name="contact-amount" type="number" id="numContacts">
-                <div>
+                <input name="contact-amount" type="number" id="numContacts" value="1" min="1">
+                <div id="singleName">
+                    <label for="name-contact">Name of contact:</label>
+                    <input name="name-contact" type="text" id="nameContact">
+                </div>
+                <div id="optionalNames" class="hidden">
                     <h4>Contact Names</h4>
                 </div>
+                <button type="button" id="updateBtn">Update</button>
             </div>
-            <div>
-                <label for="name-contact">Name of contact/chat:</label>
-                <input name="name-contact" type="text" id="nameContact">
-            </div>
-            <button type="button" id="updateBtn">Update</button>
-            <div>
+            <div class="message-options">
+                <h4>Write the Message</h4>
                 <label for="name-input">Name:</label>
                 <input type="text" name="name-input" id="name">
+                <div>
+                    <label for="message">Message:</label>
+                    <span id="emptyText" class="warning hidden">Hey, buddy... you gotta put some text for a message to show up...</span>
+                    <textarea name="message" id="message-box" cols="50" rows="10"></textarea>
+                </div>
+                <button type="button" id="receiveBtn">Receive</button>
+                <button type="button" id="sendBtn">Send</button>
             </div>
-            <div>
-                <label for="message">Message:</label>
-                <textarea name="message" id="message-box" cols="50" rows="10"></textarea>
-            </div>
-            <button type="button" id="receiveBtn">Receive</button>
-            <button type="button" id="sendBtn">Send</button>
         </section>
     </main>
 

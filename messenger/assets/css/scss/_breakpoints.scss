@@ -6,23 +6,15 @@ $break-large: 60em;
 // mixins
 @mixin breakpoint($break) {
     @if $break==large {
-        @media (min-width: $break-large) {
-            @content;
-        }
+        @media (min-width: $break-large) { @content; }
     }
     @else if ($break==medium) {
-        @media (min-width: $break-medium) {
-            @content;
-        }
+        @media (min-width: $break-medium) { @content; }
     }
     @else if ($break==small) {
-        @media (min-width: $break-small) {
-            @content;
-        }
+        @media (min-width: $break-small) { @content; }
     }
     @else {
-        @media ($break) {
-            @content;
-        }
+        @media ($break) { @content; }
     }
 }
