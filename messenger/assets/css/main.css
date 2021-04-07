@@ -104,6 +104,11 @@ a:hover {
   transition: color 0.2s ease-in;
 }
 
+input,
+textarea {
+  padding: 0.8em;
+}
+
 textarea {
   width: 95%;
   border-radius: 20px;
@@ -217,7 +222,13 @@ div.phone-screen div.text-footer {
   grid-column: 1/span -span;
   grid-row: 27/span 2;
   border-top: solid 1px lightgray;
-  padding-top: 0.6em;
+  padding-top: 0.2em;
+}
+div.phone-screen div.text-footer .icon {
+  color: darkgray;
+}
+div.phone-screen div.text-footer input {
+  border: 1px solid darkgray;
 }
 
 .icon i {
@@ -259,6 +270,13 @@ div.phone-screen div.text-footer {
   margin-right: 0;
 }
 
+.convo-time {
+  font-size: 0.7em;
+  color: darkgray;
+  text-align: center;
+  margin: 0 auto;
+}
+
 .hidden {
   display: none;
   animation: fade-out 0.3s ease-out;
@@ -278,6 +296,8 @@ div.phone-screen div.text-footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: none;
+  margin: 0.5em auto;
+  align-items: center;
 }
 .input-grid label {
   grid-column: 1/span 1;
@@ -288,8 +308,36 @@ div.phone-screen div.text-footer {
   grid-row: 1/span 1;
 }
 
+.input-grid-other {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: none;
+  grid-gap: 5px;
+  margin: 0.5em auto;
+  align-items: center;
+}
+.input-grid-other label {
+  grid-column: 1/span 1;
+  grid-row: 1/span 1;
+}
+.input-grid-other input {
+  grid-column: 2/span 3;
+  grid-row: 1/span 1;
+}
+.input-grid-other button {
+  grid-column: 5/span 1;
+  grid-row: 1/span 1;
+}
+
 .warning {
   color: white;
+  font-size: 0.8em;
+  opacity: 0;
+}
+
+.fadeIn {
+  transition: opacity 0.3s ease-in;
+  opacity: 1;
 }
 
 #singleName {
@@ -310,6 +358,7 @@ div.phone-screen div.text-footer {
 #optionalNames div label {
   grid-column: 1/span 1;
   grid-row: 1/span 1;
+  align-self: center;
 }
 #optionalNames div input {
   grid-column: 2/span 3;

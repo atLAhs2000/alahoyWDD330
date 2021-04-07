@@ -6,6 +6,7 @@ function updateNames(contactNum, prevContactNum) {
     let recipients = document.getElementById('recipientNum');
     if (contactNum == 1) {
         let contactName = document.getElementById('nameContact');
+        // set contact name based on value
         contact.innerHTML = (contactName.value === '') ? 'Unknown Number' : contactName.value;
         recipients.textContent = '';
     } else {

@@ -85,6 +85,11 @@ a {
     }
 }
 
+input,
+textarea {
+    padding: 0.8em;
+}
+
 textarea {
     width: 95%;
     border-radius: 20px;
@@ -187,7 +192,13 @@ div.phone-screen {
     div.text-footer {
         @include grid-column-row(1, -span, 27, 2);
         border-top: solid 1px lightgray;
-        padding-top: 0.6em;
+        padding-top: 0.2em;
+        .icon {
+            color: darkgray;
+        }
+        input {
+            border: 1px solid darkgray;
+        }
     }
 }
 
@@ -230,6 +241,13 @@ div.phone-screen {
     }
 }
 
+.convo-time {
+    font-size: 0.7em;
+    color: darkgray;
+    text-align: center;
+    margin: 0 auto;
+}
+
 .hidden {
     display: none;
     animation: fade-out 0.3s ease-out;
@@ -247,6 +265,8 @@ div.phone-screen {
 
 .input-grid {
     @include grid-container(4);
+    margin: 0.5em auto;
+    align-items: center;
     label {
         @include grid-column-row(1, 1);
     }
@@ -255,8 +275,31 @@ div.phone-screen {
     }
 }
 
+.input-grid-other {
+    @include grid-container(5);
+    grid-gap: 5px;
+    margin: 0.5em auto;
+    align-items: center;
+    label {
+        @include grid-column-row(1, 1);
+    }
+    input {
+        @include grid-column-row(2, 3);
+    }
+    button {
+        @include grid-column-row(5, 1);
+    }
+}
+
 .warning {
     color: white;
+    font-size: 0.8em;
+    opacity: 0;
+}
+
+.fadeIn {
+    transition: opacity 0.3s ease-in;
+    opacity: 1;
 }
 
 #singleName {
@@ -272,6 +315,7 @@ div.phone-screen {
         @include grid-container(4);
         label {
             @include grid-column-row(1, 1);
+            align-self: center;
         }
         input {
             @include grid-column-row(2, 3);
