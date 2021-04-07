@@ -30,6 +30,19 @@
     opacity: 0;
   }
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: lightgray;
+  border-radius: 25px;
+}
+
 body {
   background-color: #f3f4ed;
   margin: 0;
@@ -91,6 +104,16 @@ a:hover {
   transition: color 0.2s ease-in;
 }
 
+textarea {
+  width: 95%;
+  border-radius: 20px;
+}
+
+input {
+  border: none;
+  border-radius: 20px;
+}
+
 .blink-type {
   display: none;
   background-color: #ff6f3c;
@@ -108,35 +131,78 @@ a:hover {
 
 div.phone-case {
   width: 100%;
-  height: 800px;
+  height: 700px;
   background-color: #434343;
   display: flex;
   border-radius: 25px;
   align-items: center;
 }
+@media (min-width: 35em) {
+  div.phone-case {
+    width: 400px;
+  }
+}
 
 div.phone-screen {
   width: 100%;
-  height: 88%;
+  height: 90%;
   margin: auto;
   background-color: white;
   display: grid;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(14, 1fr);
+  grid-template-rows: repeat(28, 1fr);
+}
+div.phone-screen div.phone-header {
+  grid-column: 1/span -span;
+  grid-row: 1/span 1;
+  background-color: #081e24;
+  text-align: right;
+  padding-right: 0.5em;
+  padding-top: 0.25em;
+  font-size: 0.8em;
+  color: white;
+}
+div.phone-screen div.phone-header .battery {
+  transform: rotate(-90deg);
 }
 div.phone-screen div.text-header {
   grid-column: 1/span -span;
-  grid-row: 1/span 1;
+  grid-row: 2/span 2;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   padding: 0.5em;
-  background-color: lightgray;
+  border-bottom: solid 1px lightgray;
+}
+div.phone-screen div.text-header div:nth-child(1) {
+  grid-column: 1/span 1;
+  grid-row: 1/span 2;
+  align-self: center;
+}
+div.phone-screen div.text-header div:nth-child(2) {
+  grid-column: 2/span 3;
+  grid-row: 1/span 1;
+  justify-self: start;
+}
+div.phone-screen div.text-header div:nth-child(3) {
+  grid-column: 5/span 2;
+  grid-row: 1/span 2;
+  align-self: center;
+  justify-self: end;
+}
+div.phone-screen div.text-header div:nth-child(4) {
+  grid-column: 2/span 3;
+  grid-row: 2/span 1;
+  justify-self: start;
 }
 div.phone-screen div.messages {
   grid-column: 1/span -span;
-  grid-row: 2/span 12;
+  grid-row: 4/span 23;
   width: 100%;
   height: 100%;
   overflow: auto;
+  font-size: 0.9em;
 }
 div.phone-screen div.messages div {
   max-width: 95%;
@@ -145,12 +211,17 @@ div.phone-screen div.messages div {
 div.phone-screen div.messages div div {
   margin-left: 0;
   margin-right: 0;
-  max-width: 80%;
+  max-width: 60%;
 }
 div.phone-screen div.text-footer {
   grid-column: 1/span -span;
-  grid-row: 14/span 1;
-  background-color: lightgray;
+  grid-row: 27/span 2;
+  border-top: solid 1px lightgray;
+  padding-top: 0.6em;
+}
+
+.icon i {
+  margin: 0 0.5rem;
 }
 
 .received,
@@ -160,7 +231,7 @@ div.phone-screen div.text-footer {
 .received div,
 .sent div {
   padding: 0.8em;
-  border-radius: 15px;
+  border-radius: 25px;
   display: inline-block;
   max-width: 60%;
 }
@@ -168,11 +239,12 @@ div.phone-screen div.text-footer {
 .received {
   text-align: left;
 }
-.received div:nth-child(1) {
+.received .receive-name {
   padding: 0.2em;
   display: block;
 }
-.received div:nth-child(2) {
+.received .receivedMessage {
+  padding: 0.8em;
   background-color: lightgray;
   margin-left: 10px;
 }
@@ -181,6 +253,7 @@ div.phone-screen div.text-footer {
   text-align: right;
 }
 .sent div {
+  text-align: left;
   background-color: teal;
   color: white;
   margin-right: 0;
@@ -193,27 +266,62 @@ div.phone-screen div.text-footer {
 
 .options {
   margin: 0.8em;
+  padding: 0.2em;
   background-color: #155263;
   color: #ff9a3c;
 }
-.options div {
+.options form {
   margin: 0.4em;
 }
 
-.device-choice {
-  display: none;
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: none;
 }
-@media (min-width: 35em) {
-  .device-choice {
-    display: block;
-  }
+.input-grid label {
+  grid-column: 1/span 1;
+  grid-row: 1/span 1;
+}
+.input-grid input {
+  grid-column: 2/span 3;
+  grid-row: 1/span 1;
+}
+
+.warning {
+  color: white;
+}
+
+#singleName {
+  animation: fade-in 0.3s ease-in;
 }
 
 #optionalNames {
   animation: fade-in 0.3s ease-in;
+  opacity: 1;
 }
 #optionalNames div {
   animation: fade-in 0.3s ease-in;
+  margin: 0.3em auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: none;
+}
+#optionalNames div label {
+  grid-column: 1/span 1;
+  grid-row: 1/span 1;
+}
+#optionalNames div input {
+  grid-column: 2/span 3;
+  grid-row: 1/span 1;
+}
+#optionalNames .removed {
+  animation: fade-out 0.3s ease-out;
+  opacity: 0;
+}
+#optionalNames.removed {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 }
 
 /*# sourceMappingURL=main.css.map */
