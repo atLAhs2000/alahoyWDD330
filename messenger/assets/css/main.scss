@@ -46,7 +46,7 @@ footer {
     overflow: hidden;
 }
 
-main {
+main.text-pretender {
     text-align: center;
     // media query for medium
     @include breakpoint(large) {

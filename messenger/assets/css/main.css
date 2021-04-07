@@ -64,11 +64,11 @@ footer {
   overflow: hidden;
 }
 
-main {
+main.text-pretender {
   text-align: center;
 }
 @media (min-width: 60em) {
-  main {
+  main.text-pretender {
     margin: 0 auto;
     width: 80%;
     padding: 1em;
@@ -80,19 +80,19 @@ main {
   }
 }
 @media (min-width: 60em) {
-  main h2 {
+  main.text-pretender h2 {
     grid-column: 1/span 1;
     grid-row: 1/span 1;
   }
 }
 @media (min-width: 60em) {
-  main .note {
+  main.text-pretender .note {
     grid-column: 1/span 1;
     grid-row: 2/span 1;
   }
 }
 @media (min-width: 60em) {
-  main .phone {
+  main.text-pretender .phone {
     grid-column: 1/span 1;
     grid-row: 3/span 1;
     align-self: center;
@@ -100,7 +100,7 @@ main {
   }
 }
 @media (min-width: 60em) {
-  main .options {
+  main.text-pretender .options {
     grid-column: 2/span 1;
     grid-row: 3/span 1;
     border-radius: 15px;
