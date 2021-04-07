@@ -1,5 +1,8 @@
-// define all the variables and buttons to update or give event listeners to
+// import
+import { removedAnimate } from './animate.js';
+// define all the variables
 var contact = document.getElementById('contact-name');
+var phoneNumInput = document.getElementById('phoneNum');
 
 // update contactNames
 function updateNames(contactNum, prevContactNum) {
@@ -8,7 +11,7 @@ function updateNames(contactNum, prevContactNum) {
         let contactName = document.getElementById('nameContact');
         // set contact name based on value
         contact.innerHTML = (contactName.value === '') ? 'Unknown Number' : contactName.value;
-        recipients.textContent = '';
+        updateSinglePhone(contactNum, recipients);
     } else {
         var allNames = [];
         contact.textContent = '';
@@ -56,8 +59,7 @@ function updateContacts(contacts, previousContacts) {
             }
         } else {
             removeNames(previousContacts, contacts);
-            optionalNames.classList.add('removed');
-            setTimeout(function() { optionalNames.classList.add('hidden'); }, 300);
+            removedAnimate(optionalNames);
             singleName.classList.remove('hidden');
         }
     }
@@ -69,8 +71,7 @@ function updateContacts(contacts, previousContacts) {
 function removeNames(startNum, removeNum) {
     for (let i = startNum; i > removeNum; i--) {
         let contactName = document.getElementById(`contact-name-div${i}`);
-        contactName.classList.add('removed');
-        setTimeout(function(){ contactName.remove(); }, 300);
+        removedAnimate(contactName);
     }
 }
 
@@ -95,6 +96,17 @@ function addNames(startNum, contactNum) {
         contactName.appendChild(contactNameLabel);
         contactName.appendChild(contactNameInput);
         optionalNames.appendChild(contactName);
+    }
+}
+
+function updateSinglePhone(contacts, recipientsVal) {
+    let phoneNum = phoneNumInput.value;
+    let singleNumWarn = document.getElementById('phoneNumWarn');
+    if (phoneNumInput.validity.patternMismatch) {
+        singleNumWarn.textContent = 'Enter a valid phone number';
+    } else {
+        singleNumWarn.textContent = '';
+        recipientsVal.textContent = phoneNum;
     }
 }
 

@@ -67,10 +67,44 @@ footer {
 main {
   text-align: center;
 }
-@media (min-width: 35em) {
+@media (min-width: 60em) {
   main {
+    margin: 0 auto;
+    width: 80%;
     padding: 1em;
     text-align: left;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: none;
+    grid-template-rows: 80px 40px 2fr;
+  }
+}
+@media (min-width: 60em) {
+  main h2 {
+    grid-column: 1/span 1;
+    grid-row: 1/span 1;
+  }
+}
+@media (min-width: 60em) {
+  main .note {
+    grid-column: 1/span 1;
+    grid-row: 2/span 1;
+  }
+}
+@media (min-width: 60em) {
+  main .phone {
+    grid-column: 1/span 1;
+    grid-row: 3/span 1;
+    align-self: center;
+    justify-self: center;
+  }
+}
+@media (min-width: 60em) {
+  main .options {
+    grid-column: 2/span 1;
+    grid-row: 3/span 1;
+    border-radius: 15px;
+    justify-self: start;
   }
 }
 
@@ -119,6 +153,19 @@ input {
   border-radius: 20px;
 }
 
+button {
+  border: none;
+  border-radius: 12px;
+  background-color: #ffc93c;
+  color: #155263;
+  padding: 0.8em;
+  transition: background-color 0.3s ease-out;
+}
+button:hover {
+  background-color: #ff9a3c;
+  transition: background-color 0.3s ease-in;
+}
+
 .blink-type {
   display: none;
   background-color: #ff6f3c;
@@ -142,7 +189,7 @@ div.phone-case {
   border-radius: 25px;
   align-items: center;
 }
-@media (min-width: 35em) {
+@media (min-width: 60em) {
   div.phone-case {
     width: 400px;
   }
@@ -210,7 +257,7 @@ div.phone-screen div.messages {
   font-size: 0.9em;
 }
 div.phone-screen div.messages div {
-  max-width: 95%;
+  max-width: 100%;
   margin: 0 auto;
 }
 div.phone-screen div.messages div div {
@@ -222,22 +269,49 @@ div.phone-screen div.text-footer {
   grid-column: 1/span -span;
   grid-row: 27/span 2;
   border-top: solid 1px lightgray;
-  padding-top: 0.2em;
+  padding-top: 0.4em;
 }
 div.phone-screen div.text-footer .icon {
   color: darkgray;
 }
 div.phone-screen div.text-footer input {
   border: 1px solid darkgray;
+  padding: 0.5em;
+}
+div.phone-screen div.text-footer button {
+  border: none;
+  background: #218aff;
+  color: white;
+  padding: 0.5em;
+  border-radius: 25px;
+}
+div.phone-screen div.text-footer button:hover {
+  background-color: #3b97ff;
 }
 
 .icon i {
   margin: 0 0.5rem;
 }
 
+.removed {
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+}
+
 .received,
 .sent {
-  margin-bottom: 15px !important;
+  margin-bottom: 10px !important;
+  display: grid;
+  transition: transform 0.2s ease-out;
+}
+.received .delete-message,
+.sent .delete-message {
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  color: #ff6f3c;
+  background: transparent;
+  border: none;
 }
 .received div,
 .sent div {
@@ -246,15 +320,35 @@ div.phone-screen div.text-footer input {
   display: inline-block;
   max-width: 60%;
 }
+.received:hover,
+.sent:hover {
+  transform: translateY(-10%);
+  transition: transform 0.2s ease-in;
+}
+.received:hover .delete-message,
+.sent:hover .delete-message {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
 
 .received {
   text-align: left;
+  grid-template-columns: 15px 2fr;
+  grid-template-rows: 1fr 15px 2fr;
+}
+.received .delete-message {
+  grid-column: 1/span 1;
+  grid-row: 2/span 1;
 }
 .received .receive-name {
+  grid-column: 2/span 1;
+  grid-row: 1/span 1;
   padding: 0.2em;
   display: block;
 }
 .received .receivedMessage {
+  grid-column: 2/span 1;
+  grid-row: 2/span 2;
   padding: 0.8em;
   background-color: lightgray;
   margin-left: 10px;
@@ -262,8 +356,19 @@ div.phone-screen div.text-footer input {
 
 .sent {
   text-align: right;
+  grid-template-columns: 2fr 15px;
+  grid-template-rows: 15px 2fr;
+}
+.sent .delete-message {
+  grid-column: 2/span 1;
+  grid-row: 1/span 1;
+  left: 30%;
+  bottom: 20%;
 }
 .sent div {
+  grid-column: 1/span 1;
+  grid-row: 1/span 2;
+  justify-self: end;
   text-align: left;
   background-color: teal;
   color: white;
@@ -283,10 +388,20 @@ div.phone-screen div.text-footer input {
 }
 
 .options {
-  margin: 0.8em;
-  padding: 0.2em;
+  margin: 0;
+  padding: 0.5em;
   background-color: #155263;
   color: #ff9a3c;
+}
+@media (min-width: 35em) {
+  .options {
+    padding: 1em;
+  }
+}
+@media (min-width: 60em) {
+  .options .input-grid label {
+    justify-self: center;
+  }
 }
 .options form {
   margin: 0.4em;
@@ -332,12 +447,14 @@ div.phone-screen div.text-footer input {
 .warning {
   color: white;
   font-size: 0.8em;
-  opacity: 0;
+}
+
+.phone-num .warning {
+  text-align: left;
 }
 
 .fadeIn {
-  transition: opacity 0.3s ease-in;
-  opacity: 1;
+  animation: fade-in 0.3s ease-in;
 }
 
 #singleName {

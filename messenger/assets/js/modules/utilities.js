@@ -1,5 +1,7 @@
 // import
 import { updateNames, updateContacts, contact } from './UpdateContacts.js';
+import { phoneSendBtn } from '../main.js';
+import { removedAnimate } from './animate.js';
 
 // define variables
 var messageScreen = document.getElementById('messages');
@@ -13,8 +15,8 @@ var batteryInput = document.getElementById('batteryInput');
 
 // send messages to phone
 function texting(e) {
-    // get the value from the message box and check if empty
-    let message = document.getElementById('message-box');
+    // get the value from the appropriate message box
+    let message = (e.target != phoneSendBtn) ? document.getElementById('message-box') : document.getElementById('phoneSendMessage');
     let missingText = document.getElementById('textMissing');
     // check if the message is empty
     if (message.validity.valueMissing) {
@@ -34,10 +36,10 @@ function texting(e) {
         if (e.target == receiveBtn) {
             // set some special info based on name
             if (numOfContacts > 1) {
-                let receiveName = (contact != 'Unknown Number') ? document. getElementById('name').value : contact;
+                let receiveName = (contact != 'Unknown Number') ? document.getElementById('name').value : contact;
                 let nameBox = document.createElement('div');
                 nameBox.textContent = receiveName;
-                receiveName.classList('receive-name');
+                nameBox.classList.add('receive-name');
                 messageBox.appendChild(nameBox);
             }
             // add class based on sent or received
@@ -46,10 +48,27 @@ function texting(e) {
         } else {
             messageBox.classList.add('sent');
         }
+        // add a button for deleting messages
+        let deleteBtn = document.createElement('button');
+        deleteBtn.setAttribute('type', 'button');
+        deleteBtn.textContent = 'x';
+        deleteBtn.classList.add('delete-message');
+        // event listener for deleting message
+        deleteBtn.addEventListener('click', deleteMessage);
+        messageBox.appendChild(deleteBtn);
+        // empty message input and display message on phone screen
         message.value = '';
         messageBox.appendChild(textBox);
         messageScreen.appendChild(messageBox);
     }   
+}
+
+// delete a message
+function deleteMessage(e) {
+    let delBtnFocus = e.target;
+    // find which message was selected for deletion
+    let selectedMessage = delBtnFocus.parentElement;
+    removedAnimate(selectedMessage);
 }
 
 // update the contact info
@@ -97,7 +116,7 @@ function updateBattery() {
     let batteryPercent = batteryInput.value;
     if (batteryInput.validity.valid) {
         otherOptionsError.classList.remove('fadeIn');
-        otherOptionsError.textContotherOptionsErrorent = '';
+        otherOptionsError.textContent = '';
         document.getElementById('batteryPercent').textContent = batteryPercent;
         let batteryIcon = document.getElementById('batteryIcon');
         switch (true) {

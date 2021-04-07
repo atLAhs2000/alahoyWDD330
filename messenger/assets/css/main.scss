@@ -49,9 +49,38 @@ footer {
 main {
     text-align: center;
     // media query for medium
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
+        margin: 0 auto;
+        width: 80%;
         padding: 1em;
         text-align: left;
+        @include grid-container(2);
+        grid-template-rows: 80px 40px 2fr;
+    }
+    // grid system
+    h2 {
+        @include breakpoint(large) {
+            @include grid-column-row(1, 1, 1, 1);
+        }
+    }
+    .note {
+        @include breakpoint(large) {
+            @include grid-column-row(1, 1, 2, 1);
+        }
+    }
+    .phone {
+        @include breakpoint(large) {
+            @include grid-column-row(1, 1, 3, 1);
+            align-self: center;
+            justify-self: center;
+        }
+    }
+    .options {
+        @include breakpoint(large) {
+            @include grid-column-row(2, 1, 3, 1);
+            border-radius: 15px;
+            justify-self: start;
+        }
     }
 }
 
@@ -100,6 +129,19 @@ input {
     border-radius: 20px;
 }
 
+button {
+    border: none;
+    border-radius: 12px;
+    background-color: $link-color;
+    color: $secondary-color;
+    padding: 0.8em;
+    transition: background-color 0.3s ease-out;
+    &:hover {
+        background-color: $accent;
+        transition: background-color 0.3s ease-in;
+    }
+}
+
 .blink-type {
     display: none;
     background-color: $tertiary-color;
@@ -115,7 +157,7 @@ input {
 
 div.phone-case {
     width: 100%;
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
         width: 400px;
     }
     height: 700px;
@@ -179,7 +221,7 @@ div.phone-screen {
         font-size: 0.9em;
         // message box
         div {
-            max-width: 95%;
+            max-width: 100%;
             margin: 0 auto;
             div {
                 margin-left: 0;
@@ -192,12 +234,23 @@ div.phone-screen {
     div.text-footer {
         @include grid-column-row(1, -span, 27, 2);
         border-top: solid 1px lightgray;
-        padding-top: 0.2em;
+        padding-top: 0.4em;
         .icon {
             color: darkgray;
         }
         input {
             border: 1px solid darkgray;
+            padding: 0.5em;
+        }
+        button {
+            border: none;
+            background: #218aff;
+            color: white;
+            padding: 0.5em;
+            border-radius: 25px;
+            &:hover {
+                background-color: lighten(#218aff, 5%);
+            }
         }
     }
 }
@@ -206,34 +259,72 @@ div.phone-screen {
     margin: 0 0.5rem;
 }
 
+.removed {
+    transition: opacity 0.3s ease-out;
+    opacity: 0;
+}
+
 .received,
 .sent {
-    margin-bottom: 15px !important;
+    margin-bottom: 10px !important;
+    display: grid;
+    transition: transform 0.2s ease-out;
+    .delete-message {
+        padding: 0;
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+        color: $tertiary-color;
+        background: transparent;
+        border: none;
+    }
     div {
         padding: 0.8em;
         border-radius: 25px;
         display: inline-block;
         max-width: 60%;
+    }
+    &:hover {
+        transform: translateY(-10%);
+        transition: transform 0.2s ease-in;
+        .delete-message {
+            opacity: 1;
+            transition: opacity 0.2s ease-in;
+        }
     }  
 }
 
 .received {
     text-align: left;
+    grid-template-columns: 15px 2fr;
+    grid-template-rows: 1fr 15px 2fr;
+    .delete-message {
+        @include grid-column-row(1, 1, 2, 1);
+    }
     .receive-name {
+        @include grid-column-row(2, 1, 1, 1);
         padding: 0.2em;
         display: block;
     }
     .receivedMessage {
+        @include grid-column-row(2, 1, 2, 2);
         padding: 0.8em;
         background-color: lightgray;
         margin-left: 10px;
     }
-    
 }
 
 .sent {
     text-align: right;
+    grid-template-columns: 2fr 15px;
+    grid-template-rows: 15px 2fr;
+    .delete-message {
+        @include grid-column-row(2, 1, 1, 1);
+        left: 30%;
+        bottom: 20%;
+    }
     div {
+        @include grid-column-row(1, 1, 1, 2);
+        justify-self: end;
         text-align: left;
         background-color: teal;
         color: white;
@@ -254,10 +345,18 @@ div.phone-screen {
 }
 
 .options {
-    margin: 0.8em;
-    padding: 0.2em;
+    margin: 0;
+    padding: 0.5em;
     background-color: $secondary-color;
     color: $accent;
+    @include breakpoint(medium) {
+        padding: 1em;
+    }
+    @include breakpoint(large) {
+        .input-grid label {
+            justify-self: center;
+        }
+    }
     form {
         margin: 0.4em;
     }
@@ -294,12 +393,14 @@ div.phone-screen {
 .warning {
     color: white;
     font-size: 0.8em;
-    opacity: 0;
+}
+
+.phone-num .warning {
+    text-align: left;
 }
 
 .fadeIn {
-    transition: opacity 0.3s ease-in;
-    opacity: 1;
+    animation: fade-in 0.3s ease-in;
 }
 
 #singleName {

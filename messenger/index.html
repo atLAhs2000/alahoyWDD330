@@ -20,7 +20,7 @@
     <!-- main site -->
     <main>
         <h2>Messenger Simulation<span class="blink-type">&nbsp;</span></h2>
-        <div>
+        <div class="note">
             <p><i>Note: Only replicating Android phone appearance for now.</i></p>
         </div>
 
@@ -39,16 +39,24 @@
                     <div class="text-header" id="text-header">
                         <div class="icon"><i class="fas fa-chevron-left"></i></div>
                         <div id="contact-name">Unknown Number</div>
-                        <div class="icon"><i class="fas fa-phone-alt"></i><i class="fas fa-search"></i><i class="fas fa-ellipsis-v"></i></div>
+                        <div class="icon">
+                            <i class="fas fa-phone-alt"></i>
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
                         <div id="recipientNum"></div>
                     </div>
                     <!-- messages scroller -->
                     <div class="messages" id="messages">&nbsp;</div>
                     <!-- bottom of phone screen -->
                     <div class="text-footer">
-                        <span class="icon"><i class="fas fa-image"></i></span>
-                        <input type="text">
-                        <button>Send</button>
+                        <span class="icon">
+                            <i class="fas fa-image"></i>
+                            <i class="fas fa-camera"></i>
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <input type="text" id="phoneSendMessage" min="1" max="160">
+                        <button type="button" id="phoneSend"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
             </div>
@@ -56,69 +64,77 @@
         
         <!-- simulation options -->
         <section class="options">
-            <h3>Options</h3>
-            <!-- send / receive message -->
-            <form class="message-options">
-                <h4>Write the Message</h4>
-                <div class="input-grid">
-                   <label for="name-input">Name:</label>
-                    <input type="text" name="name-input" id="name"> 
-                </div>
-                <div>
-                    <label for="message">Message:</label>
-                    <div class="warning" id="textMissing"></div>
-                    <textarea name="message" id="message-box" cols="50" rows="10" required></textarea>
-                </div>
-                <button type="button" id="receiveBtn">Receive</button>
-                <button type="button" id="sendBtn">Send</button>
-            </form>
-            <!-- contacts options -->
-            <form class="name-options">
-                <h4>Contact Options</h4>
-                <div class="warning" id="updateNote"></div>
-                <div class="input-grid">
-                    <label for="contact-amount">Number of contacts:</label>
-                    <input name="contact-amount" type="number" id="numContacts" value="1" min="1" max="35">
-                </div>
-                <div id="singleName" class="input-grid">
-                    <label for="name-contact">Name of contact:</label>
-                    <input name="name-contact" type="text" id="nameContact">
-                </div>
-                <div id="optionalNames" class="hidden">
-                    <h4>Contact Names</h4>
-                </div>
-                <button type="button" id="updateBtn">Update</button>
-            </form>
-            <!-- other options -->
-            <form class="other-options">
-                <h4>Other</h4>
-                <div class="warning" id="otherError"></div>
-                <!-- update the header time -->
-                <div class="input-grid-other">
-                    <label for="headTime">Header Time: </label>
-                    <input type="text" name="headTime" id="headTime" placeholder="00:00" pattern="([01]?[0-9]{1}|2[0-3]{1}):[0-5]{1}[0-9]{1}">
-                    <button type="button" id="headTimeBtn">Update</button>
-                </div>
-                <!-- post a conversation time -->
-                <div class="input-grid-other">
-                    <label for="convoTime">Conversation Time: </label>
-                    <input type="text" name="convoTime" placeholder="Wednesday, January 20, 2021" id="convoTime">
-                    <button type="button" id="convoTimeBtn">Update</button>
-                </div>
-                <!-- update the battery at the header -->
-                <div class="input-grid-other">
-                    <label for="battery">Battery Percentage</label>
-                    <input type="number" min="0" max="100" id="batteryInput">
-                    <button type="button" id="updateBattery">Update</button>
-                </div>
-            </form>
+            <div>
+                <h3>Options</h3>
+                <!-- send / receive message -->
+                <form class="message-options">
+                    <h4>Write the Message</h4>
+                    <div class="input-grid">
+                       <label for="name-input">Name:</label>
+                        <input type="text" name="name-input" id="name"> 
+                    </div>
+                    <div>
+                        <label for="message">Message:</label>
+                        <div class="warning" id="textMissing"></div>
+                        <textarea name="message" id="message-box" cols="50" rows="10" required></textarea>
+                    </div>
+                    <button type="button" id="receiveBtn">Receive</button>
+                    <button type="button" id="sendBtn">Send</button>
+                </form>
+                <!-- contacts options -->
+                <form class="name-options">
+                    <h4>Contact Options</h4>
+                    <div class="warning" id="updateNote"></div>
+                    <div class="input-grid">
+                        <label for="contact-amount">Number of contacts:</label>
+                        <input name="contact-amount" type="number" id="numContacts" value="1" min="1" max="35">
+                    </div>
+                    <div class="phone-num">
+                        <div class="warning" id="phoneNumWarn">Only for one contact</div>
+                        <div class="input-grid">
+                            <label for="contact-amount">Phone number:</label>
+                            <input name="contact-amount" type="tel" id="phoneNum" pattern="[0-9]{10}" placeholder="5555551234">
+                        </div>
+                    </div>
+                    <div id="singleName" class="input-grid">
+                        <label for="name-contact">Name of contact:</label>
+                        <input name="name-contact" type="text" id="nameContact">
+                    </div>
+                    <div id="optionalNames" class="hidden">
+                        <h4>Contact Names</h4>
+                    </div>
+                    <button type="button" id="updateBtn">Update</button>
+                </form>
+                <!-- other options -->
+                <form class="other-options">
+                    <h4>Other</h4>
+                    <div class="warning" id="otherError"></div>
+                    <!-- update the header time -->
+                    <div class="input-grid-other">
+                        <label for="headTime">Header Time: </label>
+                        <input type="text" name="headTime" id="headTime" placeholder="00:00" pattern="([01]?[0-9]{1}|2[0-3]{1}):[0-5]{1}[0-9]{1}">
+                        <button type="button" id="headTimeBtn">Update</button>
+                    </div>
+                    <!-- post a conversation time -->
+                    <div class="input-grid-other">
+                        <label for="convoTime">Conversation Time: </label>
+                        <input type="text" name="convoTime" placeholder="Wednesday, January 20, 2021" id="convoTime">
+                        <button type="button" id="convoTimeBtn">Update</button>
+                    </div>
+                    <!-- update the battery at the header -->
+                    <div class="input-grid-other">
+                        <label for="battery">Battery Percentage:</label>
+                        <input type="number" min="0" max="100" id="batteryInput">
+                        <button type="button" id="updateBattery">Update</button>
+                    </div>
+                </form>
+            </div> 
         </section>
     </main>
 
     <!-- footer -->
     <footer>
-        <a href="../index.html">Portfolio Directory</a> | 
-        <a href="challenge2plans.html">Plans Document</a>
+        <p>&copy; <span id="copyright-date"></span> | Alyssa T. A. Lahoy | California | <a href="../index.html">Portfolio Directory</a> | <a href="challenge2plans.html">Plans Document</a></p>
     </footer>
 
     <!-- scripts -->
