@@ -217,8 +217,12 @@ div.phone-screen {
         @include grid-column-row(1, -span, 4, 23);
         width: 100%;
         height: 100%;
-        overflow: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
         font-size: 0.9em;
+        word-break: break-all;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
         // message box
         div {
             max-width: 100%;
@@ -296,7 +300,7 @@ div.phone-screen {
 .received {
     text-align: left;
     grid-template-columns: 15px 2fr;
-    grid-template-rows: 1fr 15px 2fr;
+    grid-template-rows: 0.4fr 15px 2fr;
     .delete-message {
         @include grid-column-row(1, 1, 2, 1);
     }
