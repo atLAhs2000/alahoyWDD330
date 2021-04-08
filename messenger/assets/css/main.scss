@@ -228,6 +228,7 @@ div.phone-screen {
             max-width: 100%;
             margin: 0 auto;
             div {
+                width: fit-content;
                 margin-left: 0;
                 margin-right: 0;
                 max-width: 60%;
@@ -311,7 +312,6 @@ div.phone-screen {
     }
     .receivedMessage {
         @include grid-column-row(2, 1, 2, 2);
-        padding: 0.8em;
         background-color: lightgray;
         margin-left: 10px;
     }

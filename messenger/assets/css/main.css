@@ -265,6 +265,7 @@ div.phone-screen div.messages div {
   margin: 0 auto;
 }
 div.phone-screen div.messages div div {
+  width: fit-content;
   margin-left: 0;
   margin-right: 0;
   max-width: 60%;
@@ -353,7 +354,6 @@ div.phone-screen div.text-footer button:hover {
 .received .receivedMessage {
   grid-column: 2/span 1;
   grid-row: 2/span 2;
-  padding: 0.8em;
   background-color: lightgray;
   margin-left: 10px;
 }
