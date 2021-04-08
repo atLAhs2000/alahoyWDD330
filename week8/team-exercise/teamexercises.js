@@ -1,4 +1,4 @@
-const peopleUrl = "https://swapi.dev/api/people"
+const peopleUrl = "https://swapi.dev/api/people";
 const output = document.getElementById('output');
 const next = document.getElementById('next');
 const prev = document.getElementById('prev');

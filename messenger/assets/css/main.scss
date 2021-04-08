@@ -403,6 +403,15 @@ div.phone-screen {
     animation: fade-in 0.3s ease-in;
 }
 
+.name-options {
+    @include breakpoint(large) {
+        text-align: right;
+    }
+    h4 {
+        text-align: left;
+    }
+}
+
 #singleName {
     animation: fade-in 0.3s ease-in;
 }

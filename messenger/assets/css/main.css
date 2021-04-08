@@ -457,6 +457,15 @@ div.phone-screen div.text-footer button:hover {
   animation: fade-in 0.3s ease-in;
 }
 
+@media (min-width: 60em) {
+  .name-options {
+    text-align: right;
+  }
+}
+.name-options h4 {
+  text-align: left;
+}
+
 #singleName {
   animation: fade-in 0.3s ease-in;
 }
